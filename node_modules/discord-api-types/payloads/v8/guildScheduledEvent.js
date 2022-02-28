@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GuildScheduledEventPrivacyLevel = exports.GuildScheduledEventStatus = exports.GuildScheduledEventEntityType = void 0;
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-types
- * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 var GuildScheduledEventEntityType;
 (function (GuildScheduledEventEntityType) {
@@ -13,7 +12,6 @@ var GuildScheduledEventEntityType;
 })(GuildScheduledEventEntityType = exports.GuildScheduledEventEntityType || (exports.GuildScheduledEventEntityType = {}));
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-status
- * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 var GuildScheduledEventStatus;
 (function (GuildScheduledEventStatus) {
@@ -24,7 +22,6 @@ var GuildScheduledEventStatus;
 })(GuildScheduledEventStatus = exports.GuildScheduledEventStatus || (exports.GuildScheduledEventStatus = {}));
 /**
  * https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-privacy-level
- * @deprecated API and gateway v8 are deprecated and the types will not receive further updates, please update to v10.
  */
 var GuildScheduledEventPrivacyLevel;
 (function (GuildScheduledEventPrivacyLevel) {

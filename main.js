@@ -7,8 +7,9 @@ const Discord = require("discord.js");
 module.exports = class extends BaseCluster {
   async launch() {
     // A cheap and easy way to get all the intents.
+		// For v14 use IntentsBitField() instead of Intents.
     this.client = new Discord.Client({
-      intents: new Discord.IntentsBitField(32767),
+      intents: new Discord.Intents(32767),
     });
 
     require("./utils/eventLoader.js")(this.client);
