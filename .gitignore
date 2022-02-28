@@ -5,4 +5,9 @@ replit.nix
 *.nix
 
 # any data files for actual bot
+data
 data/*
+
+# node modules in general
+node_modules
+node_modules/*
