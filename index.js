@@ -7,9 +7,9 @@ const chalk = require("chalk");
 
 const shardConfig = require("./config/shards.json");
 
-const sharder = new ShardingManager(join(__dirname, "main"), {
-  token: process.env.token,
+const sharder = new ShardingManager(join(__dirname, "main.js"), {
   shardCount: shardConfig.shardCount,
+  token: process.env.token,
 });
 
 sharder.on("ready", async (cluster) => {
