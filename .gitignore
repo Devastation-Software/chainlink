@@ -1,0 +1,8 @@
+# Replit nix config files
+replit.nix
+
+# other nix config files
+*.nix
+
+# any data files for actual bot
+data/*

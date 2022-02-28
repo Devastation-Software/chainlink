@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "discord.js": "^14.0.0-dev.1645876999.a8321d8"
+  },
+  "name": "disproxify",
+  "description": "A message-proxying bot between Discord servers!",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thunder-red-star/disproxify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thunder-red-star/disproxify/issues"
+  },
+  "homepage": "https://github.com/thunder-red-star/disproxify#readme"
+}
