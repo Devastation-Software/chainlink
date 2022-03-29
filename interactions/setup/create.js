@@ -35,10 +35,6 @@ module.exports = {
         .setRequired(true)
     ),
   async execute(interaction, client) {
-    if (!interaction.member.permissions.has("MANAGE_SERVER")) {
-      return interaction.reply(
-        "You don't have permission to use that command."
-      );
-    }
+
   },
 };

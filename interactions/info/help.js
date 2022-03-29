@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-const { SlashCommandBuilder, Embed } = require("@discordjs/builders");
+const DJSBuilders = require("@discordjs/builders");
 
 const fs = require("fs");
 
@@ -24,7 +24,7 @@ module.exports = {
         dString += "`/" + data.name + "`" + ": " + data.description + "\n";
       });
       embeds.push(
-        new Discord.MessageEmbed()
+        new DJSBuilders.Embed()
           .setTitle("Help for " + c + " module")
           .setDescription(dString)
           .setColor(client.brandColor)

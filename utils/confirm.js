@@ -5,6 +5,10 @@ const {
   MessageButton,
 } = require("discord.js");
 
+const {
+  Embed
+} = require("@discordjs/builders");
+
 module.exports = async function confirmEmbed(
   interaction,
   title,
@@ -20,7 +24,7 @@ module.exports = async function confirmEmbed(
         .setLabel("Yes"),
       new MessageButton().setCustomId("no").setStyle("DANGER").setLabel("No"),
     ];
-    let embed = new MessageEmbed()
+    let Embed = new MessageEmbed()
       .setTitle(title)
       .setDescription(awaitDesc)
       .setColor("#FFFF00");
