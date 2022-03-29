@@ -4,5 +4,5 @@ const chalk = require("chalk");
 const utils = require("../utils/utils.js");
 
 module.exports = async (guild) => {
-	let client = guild.client
+  let client = guild.client;
 };
