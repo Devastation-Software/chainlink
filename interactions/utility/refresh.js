@@ -1,12 +1,12 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
 const Discord = require("discord.js");
+const DJSBuilders = require("@discordjs/builders");
 
 module.exports = {
   perms: {
     bot: ["EMBED_LINKS", "SEND_MESSAGES"],
     user: ["MANAGE_GUILD"],
   },
-  data: new SlashCommandBuilder()
+  data: new DJSBuilders.SlashCommandBuilder()
     .setName("refresh")
     .setDescription(
       "Refreshes the list of slash commands that your server can use."

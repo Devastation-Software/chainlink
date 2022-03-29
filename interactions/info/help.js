@@ -9,7 +9,7 @@ module.exports = {
     bot: ["EMBED_LINKS", "SEND_MESSAGES"],
     user: []
   },
-  data: new SlashCommandBuilder()
+  data: new DJSBuilders.SlashCommandBuilder()
     .setName("help")
     .setDescription("Returns help for the bot."),
   async execute(interaction, client) {
