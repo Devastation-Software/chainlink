@@ -5,6 +5,10 @@ const { SlashCommandBuilder, Embed } = require("@discordjs/builders");
 const fs = require("fs");
 
 module.exports = {
+  perms: {
+    bot: ["EMBED_LINKS", "SEND_MESSAGES"],
+    user: []
+  },
   data: new SlashCommandBuilder()
     .setName("help")
     .setDescription("Returns help for the bot."),

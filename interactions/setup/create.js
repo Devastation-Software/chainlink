@@ -2,6 +2,10 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const Discord = require("discord.js");
 
 module.exports = {
+  perms: {
+    bot: ["EMBED_LINKS", "SEND_MESSAGES"],
+    user: ["MANAGE_GUILD"],
+  },
   data: new SlashCommandBuilder()
     .setName("create")
     .setDescription(
