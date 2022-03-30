@@ -54,7 +54,7 @@ module.exports = {
 
     const reply = await interaction.reply({ embeds: [embed]});
 
-    const bridge = await client.bridge.create(
+    const bridge = await client.bridges.create(
       type,
       direction,
       endpoint,
