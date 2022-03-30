@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const DJSBuilders = require("@discordjs/builders");
 
+
 module.exports = {
   perms: {
     bot: ["EMBED_LINKS", "SEND_MESSAGES"],

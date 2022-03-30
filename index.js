@@ -22,6 +22,7 @@ let commandModules = fs.readFileSync("./assets/modules.json", {
 });
 commandModules = JSON.parse(commandModules);
 client.modules = Object.keys(commandModules);
+client.bridges = require("./utils/bridges.js");
 
 // The handler for all slash commands, loops over them nested dirs
 commandsList = [];
