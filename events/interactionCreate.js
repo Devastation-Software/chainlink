@@ -11,10 +11,12 @@ module.exports = async (interaction) => {
   if (!command) return;
   const options = interaction.options;
 
-  command.perms.bot.forEach(perm => {
-    let clientMember = client.guilds.get(interaction.guild.id).members.get(client.user.id);
-    if (!clientMember.hasPermission(perm)) {
-      return interaction.reply("❌ I don't have the permission to do that! I need the  `" + perm + "` permission.");
+  command.perms.bot.forEach(async perm => {
+    let guild = await client.guilds.fetch(interaction.guild.id);
+    let member = await guild.members.fetch(client.user.id);
+    if (!member.hasPermission(perm)) {
+      await interaction.reply("❌ I don't have the permission to do that! I need the  `" + perm + "` permission.");
+      return;
     }
   });
 
