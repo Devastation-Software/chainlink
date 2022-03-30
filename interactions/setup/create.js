@@ -51,7 +51,7 @@ module.exports = {
         }.`
       )
 
-    const message = await channel.send(embed);
+    const message = await interaction.reply(embed);
 
     const bridge = await client.bridge.create(
       type,
@@ -100,6 +100,6 @@ module.exports = {
       embed.setColor(16711680);
     }
 
-    message.edit(embed);
+    interaction.editReply(embed);
   },
 };
