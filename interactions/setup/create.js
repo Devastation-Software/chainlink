@@ -45,22 +45,42 @@ module.exports = {
 
         const bridge = client.bridges.create(type, direction, endpoint, guild, channel);
 
-        if (bridge) {
-            embed.setTitle("Bridge created!");
-            embed.setDescription(`A new bridge has been created between ${type === "channel" ? "channels" : "servers"}.`);
-            embed.addFields({
-                name: "Bridge ID", value: bridge,
-            }, {
-                name: "Endpoint", value: type === "channel" ? `<#${endpoint}>` : `<${endpoint}>`,
-            });
-            embed.setFooter({text: `Created by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL()});
-            embed.setColor(65348);
-        } else {
-            embed.setTitle("Bridge creation failed!");
-            embed.setDescription(`I was unable to create a new bridge between ${type === "channel" ? "channels" : "servers"}.`);
-            embed.setColor(16711680);
-        }
+        // If the bridge's two endpoints are in the same server, there's no need to request verification.
+        if ((type === "channel" && guild === client.channels.cache.get(endpoint).guild.id) || (type === "server" && guild === client.guilds.cache.get(endpoint).id)) {
+            if (bridge) {
+                client.bridges.verifyBridge(bridge);
+                embed.setTitle("Bridge created!");
+                embed.setDescription(`A new bridge has been created between ${type === "channel" ? "channels" : "servers"}.`);
+                embed.addFields({
+                    name: "Bridge ID", value: bridge,
+                }, {
+                    name: "Endpoint", value: type === "channel" ? `<#${endpoint}>` : `<${endpoint}>`,
+                });
+                embed.setFooter({
+                    text: `Created by ${interaction.user.tag}`,
+                    iconURL: interaction.user.displayAvatarURL()
+                });
+                embed.setColor(65348);
+            } else {
+                embed.setTitle("Bridge creation failed!");
+                embed.setDescription(`I was unable to create a new bridge between ${type === "channel" ? "channels" : "servers"}.`);
+                embed.setColor(16711680);
+            }
 
+        } else {
+            if (bridge) {
+                // Tell the user to verify the bridge, and generate a code to send them.
+                const code = client.bridges.createCode(bridge);
+                embed.setTitle("Bridge pending...");
+                embed.setDescription("The bridge has been created, but you need to verify it before it can be used.\n\n" +
+                    `Please use /verify in the other server with the following code: \`${code}\``);
+                embed.setColor(15658530);
+            } else {
+                embed.setTitle("Bridge creation failed!");
+                embed.setDescription(`I was unable to create a new bridge between ${type === "channel" ? "channels" : "servers"}.`);
+                embed.setColor(16711680);
+            }
+        }
         await curPage.edit({embeds: [embed]});
     },
 };

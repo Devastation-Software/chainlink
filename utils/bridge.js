@@ -11,7 +11,9 @@ module.exports = {
             direction: direction,
             endpoint: endpoint,
             guild: guild,
-            channel: channel
+            channel: channel,
+            verified: false,
+            uuid: randomUUID
         };
         fs.writeFileSync('./data/bridges.json', JSON.stringify(bridges));
         return randomUUID;
@@ -48,5 +50,43 @@ module.exports = {
             }
         }
         return foundBridges;
+    },
+
+    createCode: function (bridgeUUID) {
+        // Create a random verification code to make sure bridges aren't created without both parties agreeing.
+        // Generate 6 random numbers between 0 and 9.
+        let code = '';
+        for (let i = 0; i < 6; i++) {
+            code += Math.floor(Math.random() * 10);
+        }
+        let codes = JSON.parse(fs.readFileSync('./data/codes.json', 'utf8'));
+        codes[bridgeUUID] = code;
+        fs.writeFileSync('./data/codes.json', JSON.stringify(codes));
+        return code;
+    },
+
+    verifyCode: function (bridgeUUID, code) {
+        let codes = JSON.parse(fs.readFileSync('./data/codes.json', 'utf8'));
+        if (codes[bridgeUUID] === code) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+    getBridgeByCode: function (code) {
+        let codes = JSON.parse(fs.readFileSync('./data/codes.json', 'utf8'));
+        for (let bridge in codes) {
+            if (codes[bridge] === code) {
+                return bridge;
+            }
+        }
+        return false;
+    },
+
+    verifyBridge: function (bridgeUUID) {
+        let bridges = JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'));
+        bridges[bridgeUUID].verified = true;
+        fs.writeFileSync('./data/bridges.json', JSON.stringify(bridges));
     }
 }
