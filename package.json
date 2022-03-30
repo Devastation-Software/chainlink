@@ -5,10 +5,9 @@
     "chalk": "^4.1.2",
     "discord-api-types": "^0.27.3",
     "discord.js": "^14.0.0-dev.1648515273-ac4bc3a",
-    "kurasuta": "^3.0.1",
     "prettier": "^2.5.1"
   },
-  "name": "disproxify",
+  "name": "chainlink",
   "description": "A message-proxying bot between Discord servers!",
   "version": "1.0.0",
   "main": "index.js",
@@ -21,7 +20,7 @@
     "url": "git+https://github.com/thunder-red-star/disproxify.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "ThunderRedStar",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/thunder-red-star/disproxify/issues"
