@@ -17,5 +17,7 @@ module.exports = {
             .setTitle("Invite me")
             .setDescription("[Click here](https://discordapp.com/oauth2/authorize?client_id=947728244025724998&scope=bot%20application.commands&permissions=8) to invite me to your server.")
             .setColor("#00ff00")
+
+        await interaction.reply({ embeds: [embed] });
     },
 };
