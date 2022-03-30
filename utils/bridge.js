@@ -14,6 +14,7 @@ module.exports = {
             channel: channel
         };
         fs.writeFileSync('./data/bridges.json', JSON.stringify(bridges));
+        return true;
     },
 
     findBridgesByChannel: function (channelID) {
