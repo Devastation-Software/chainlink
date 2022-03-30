@@ -16,7 +16,7 @@ module.exports = {
     let embeds = [];
 
     client.modules.forEach((c) => {
-      files = fs.readdirSync(`./interactions/${c}/`);
+      files = fs.readdirSync(`./interactions/${c}/`).filter((f) => f.endsWith(".js"));
       let dString = "";
       files.forEach((f) => {
         interaction1 = require(`../../interactions/${c}/${f}`);
