@@ -43,6 +43,19 @@ module.exports = {
             embeds: [embed],
         });
 
+        // Check if the bot is in the endpoint server
+        const endpointGuild = client.guilds.cache.get(endpoint);
+        if (!endpointGuild) {
+            embed.setTitle("Bridge creation failed!");
+            embed.setDescription(`Please invite me to the endpoint server and try again.`);
+            embed.setColor(16711680);
+            await curPage.edit({
+                embeds: [embed],
+            });
+            return;
+        }
+
+
         const bridge = client.bridges.create(type, direction, endpoint, guild, channel);
 
         // If the bridge's two endpoints are in the same server, there's no need to request verification.
