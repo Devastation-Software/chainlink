@@ -23,6 +23,9 @@ module.exports = {
         data = interaction1.data.toJSON();
         dString += "`/" + data.name + "`" + ": " + data.description + "\n";
       });
+      if (dString === "") {
+        dString = "There are no commands in this module.";
+      }
       embeds.push(
         new DJSBuilders.Embed()
           .setTitle("Help for " + c + " module")
