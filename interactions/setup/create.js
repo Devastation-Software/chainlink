@@ -73,22 +73,26 @@ module.exports = {
           type === "channel" ? "channels" : "servers"
         }.`
       );
+      embed.addField({
+            name: "Bridge ID",
+              value: `${bridge.id}`,
+          inline: true
+    });
       embed.addField(
-        "Bridge ID",
-        `${bridge.id}`,
-        true
+          {
+              name: "Endpoint",
+              value: `${type === "channel" ? "Channel" : "Server"}: ${
+                type === "channel" ? bridge.channelId : bridge.guildId
+              }`,
+              inline: true
+          }
       );
       embed.addField(
-        "Endpoint",
-        `${type === "channel" ? "Channel" : "Server"}: ${
-          type === "channel" ? bridge.channel.name : bridge.server.name
-        }`,
-        true
-      );
-      embed.addField(
-        "Direction",
-        `${direction === "both" ? "Both directions" : direction}`,
-        true
+          {
+              name: "Direction",
+              value: `${direction === "both" ? "Both" : direction}`,
+              inline: true
+          }
       );
       embed.setFooter(
         `Created by ${client.user.tag}`,
