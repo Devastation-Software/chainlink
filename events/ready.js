@@ -12,7 +12,7 @@ module.exports = async (client) => {
       .setColor(client.brandColor)
       .addField({
         name: "Changes in this version",
-        value: client.changelog.getByVersion(client.info.build),
+        value: client.utils.changelog.getByVersion(client.info.build),
       })
       .setTimestamp();
     client.channels.cache.get(changeLogChannelId).send({ embeds: [newReleaseEmbed] });
