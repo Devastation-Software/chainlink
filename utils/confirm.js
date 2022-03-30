@@ -1,9 +1,8 @@
 const {
-  MessageActionRow,
-  Message,
-  MessageEmbed,
-  MessageButton,
-} = require("discord.js");
+  Embed,
+  ButtonComponent,
+  ActionRow,
+} = require("@discordjs/builders");
 
 const {
   Embed
@@ -18,18 +17,18 @@ module.exports = async function confirmEmbed(
 ) {
   return new Promise(async (resolve, reject) => {
     let buttonList = [
-      new MessageButton()
+      new ButtonComponent()
         .setCustomId("yes")
         .setStyle("SUCCESS")
         .setLabel("Yes"),
-      new MessageButton().setCustomId("no").setStyle("DANGER").setLabel("No"),
+      new ButtonComponent().setCustomId("no").setStyle("DANGER").setLabel("No"),
     ];
     let embed = new Embed()
       .setTitle(title)
       .setDescription(awaitDesc)
       .setColor(16776960);
 
-    const row = new MessageActionRow().addComponents(buttonList);
+    const row = new ActionRow().addComponents(buttonList);
 
     await interaction.deferReply();
 
@@ -63,7 +62,7 @@ module.exports = async function confirmEmbed(
       }
       await i.deferUpdate();
       if (!curPage.deleted) {
-        const disabledRow = new MessageActionRow().addComponents(
+        const disabledRow = new ActionRow().addComponents(
           buttonList[0].setDisabled(true),
           buttonList[1].setDisabled(true)
         );
@@ -82,7 +81,7 @@ module.exports = async function confirmEmbed(
 
     collector.on("end", async () => {
       if (!curPage.deleted) {
-        const disabledRow = new MessageActionRow().addComponents(
+        const disabledRow = new ActionRow().addComponents(
           buttonList[0].setDisabled(true),
           buttonList[1].setDisabled(true)
         );

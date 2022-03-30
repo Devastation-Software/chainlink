@@ -1,11 +1,7 @@
 const {
-  MessageActionRow,
-  Message,
-  MessageButton,
-} = require("discord.js");
-
-const {
-  Embed
+  Embed,
+    ButtonComponent,
+    ActionRow,
 } = require("@discordjs/builders");
 
 /**
@@ -19,23 +15,23 @@ const {
 const paginationEmbed = async (interaction, pages, timeout = 120000) => {
   if (!pages) throw new Error("No pages for paginationEmbed!.");
   buttonList = [
-    new MessageButton()
+    new ButtonComponent()
       .setCustomId("tobeginning")
       .setStyle("PRIMARY")
       .setEmoji("947923816129130556"),
-    new MessageButton()
+    new ButtonComponent()
       .setCustomId("last")
       .setStyle("PRIMARY")
       .setEmoji("947923816062013471"),
-    new MessageButton()
+    new ButtonComponent()
       .setCustomId("discard")
       .setEmoji("947923816120733747")
       .setStyle("DANGER"),
-    new MessageButton()
+    new ButtonComponent()
       .setCustomId("next")
       .setEmoji("947923816363982888")
       .setStyle("PRIMARY"),
-    new MessageButton()
+    new ButtonComponent()
       .setCustomId("toend")
       .setEmoji("947923816158494831")
       .setStyle("PRIMARY"),
@@ -43,7 +39,7 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
 
   let page = 0;
 
-  const row = new MessageActionRow().addComponents(buttonList);
+  const row = new ActionRow().addComponents(buttonList);
 
   //has the interaction already been deferred? If not, defer the reply.
 
@@ -100,7 +96,7 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
   collector.on("end", () => {
     try {
       if (!curPage.deleted) {
-        const disabledRow = new MessageActionRow().addComponents(
+        const disabledRow = new ActionRow().addComponents(
           buttonList[0].setDisabled(true),
           buttonList[1].setDisabled(true),
           buttonList[2].setDisabled(true),
