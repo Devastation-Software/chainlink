@@ -2,7 +2,7 @@ const fs = require('fs');
 
 module.exports = {
   getByVersion: function (version) {
-    let changelog = fs.readFileSync('./CHANGELOG.md', 'utf8');
+    let changelog = fs.readFileSync('../changelog.md', 'utf8');
     let splitByVersions = changelog.split('\n---');
     let versionChangelog = splitByVersions.filter(function (item) {
       return item.includes('## ' + version);
