@@ -31,6 +31,7 @@ client.interactions = new Discord.Collection();
 client.modules.forEach((c) => {
   files = fs.readdirSync(`./interactions/${c}/`);
   files.forEach((f) => {
+    if (!f.endsWith(".js")) return;
     interaction = require(`./interactions/${c}/${f}`);
     data = interaction.data.toJSON();
     commandsList.push(data);
