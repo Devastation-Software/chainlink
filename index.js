@@ -4,13 +4,13 @@ const fs = require("fs");
 const emojis = require("./assets/emoji.json");
 const config = require("./config/config.json");
 const utils = require("./utils/utils.js");
+const emojis = require("./assets/emoji.json");
 
 const client = new Discord.Client({
   intents: 32767,
   partials: ["MESSAGE", "CHANNEL"], // Needed to get messages from DM's as well
 });
 
-client.customEmojis = emojis;
 client.brandColor = 16746496;
 client.config = config;
 
@@ -42,6 +42,7 @@ client.modules.forEach((c) => {
 
 // For easy access
 client.commandsList = commandsList;
+
 
 // Deploy slash commands to Discord.
 client.utils.deploy.deploy(commandsList);
