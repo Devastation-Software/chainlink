@@ -4,10 +4,6 @@ const {
   ActionRow,
 } = require("@discordjs/builders");
 
-const {
-  Embed
-} = require("@discordjs/builders");
-
 module.exports = async function confirmEmbed(
   interaction,
   title,
