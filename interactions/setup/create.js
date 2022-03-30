@@ -53,7 +53,7 @@ module.exports = {
             }, {
                 name: "Endpoint", value: type === "channel" ? `<#${endpoint}>` : `<${endpoint}>`,
             });
-            embed.setFooter(`Created by ${client.user.tag}`, client.user.displayAvatarURL());
+            embed.setFooter({text: `Created by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL()});
             embed.setColor(65348);
         } else {
             embed.setTitle("Bridge creation failed!");
