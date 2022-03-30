@@ -12,7 +12,7 @@ module.exports = {
 
   getAll: function () {
     let changelogVersionObject = {};
-    let changelog = fs.readFileSync('./CHANGELOG.md', 'utf8');
+    let changelog = fs.readFileSync('../changelog.md', 'utf8');
     let splitByVersions = changelog.split('\n---');
     splitByVersions.forEach(function (item) {
       if (item.includes('## ')) {
