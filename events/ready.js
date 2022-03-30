@@ -17,6 +17,7 @@ module.exports = async (client) => {
       .setTimestamp();
     client.channels.cache.get(changeLogChannelId).send({ embeds: [newReleaseEmbed] });
     fs.writeFileSync("../data/lastcheckedversion", client.info.build);
+    console.log(`New version ${client.info.build}'s change log has been posted to the change log channel.`);
   }
 
   client.user.setActivity("messages! Shard " + client.shardId, {
