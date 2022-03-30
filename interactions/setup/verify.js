@@ -49,5 +49,9 @@ module.exports = {
             }
         }
 
+        await curPage.edit({
+            embeds: [embed],
+        });
+
     },
 };

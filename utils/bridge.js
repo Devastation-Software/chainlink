@@ -88,5 +88,9 @@ module.exports = {
         let bridges = JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'));
         bridges[bridgeUUID].verified = true;
         fs.writeFileSync('./data/bridges.json', JSON.stringify(bridges));
+
+        let codes = JSON.parse(fs.readFileSync('./data/codes.json', 'utf8'));
+        delete codes[bridgeUUID];
+        fs.writeFileSync('./data/codes.json', JSON.stringify(codes));
     }
 }
