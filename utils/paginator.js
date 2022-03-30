@@ -18,22 +18,22 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
       new ButtonComponent()
           .setCustomId("tobeginning")
           .setStyle(1)
-          .setEmoji(interaction.client.customEmojis["arrowBeginning"]),
+          .setEmoji({ name: "tobeginning", id: "947923816129130556", animated: false })
       new ButtonComponent()
           .setCustomId("last")
           .setStyle(1)
-          .setEmoji(interaction.client.customEmojis["arrowLeft"]),
+          .setEmoji({ name: "arrowleft", id: "947923816062013471", animated: false })
       new ButtonComponent()
           .setCustomId("discard")
-          .setEmoji(interaction.client.customEmojis["cross"])
+          .setEmoji({ name: "x_", id: "947923816120733747", animated: false })
           .setStyle(4),
       new ButtonComponent()
           .setCustomId("next")
-          .setEmote(interaction.client.customEmojis["arrowRight"])
+          .setEmote({ name: "arrowright", id: "947923816363982888", animated: false })
           .setStyle(1),
       new ButtonComponent()
           .setCustomId("toend")
-          .setEmoji(interaction.client.customEmojis["arrowEnd"])
+          .setEmoji({ name: "toend", id: "947923816158494831", animated: false })
           .setStyle(1),
   ];
 
