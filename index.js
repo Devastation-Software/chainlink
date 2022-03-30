@@ -4,7 +4,6 @@ const fs = require("fs");
 const emojis = require("./assets/emoji.json");
 const config = require("./config/config.json");
 const utils = require("./utils/utils.js");
-const emojis = require("./assets/emoji.json");
 
 const client = new Discord.Client({
   intents: 32767,

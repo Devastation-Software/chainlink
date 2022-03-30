@@ -18,11 +18,11 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
       new ButtonComponent()
           .setCustomId("tobeginning")
           .setStyle(1)
-          .setEmoji({ name: "tobeginning", id: "947923816129130556", animated: false })
+          .setEmoji({ name: "tobeginning", id: "947923816129130556", animated: false }),
       new ButtonComponent()
           .setCustomId("last")
           .setStyle(1)
-          .setEmoji({ name: "arrowleft", id: "947923816062013471", animated: false })
+          .setEmoji({ name: "arrowleft", id: "947923816062013471", animated: false }),
       new ButtonComponent()
           .setCustomId("discard")
           .setEmoji({ name: "x_", id: "947923816120733747", animated: false })
