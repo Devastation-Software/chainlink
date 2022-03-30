@@ -42,6 +42,7 @@ client.modules.forEach((c) => {
 // For easy access
 client.commandsList = commandsList;
 
+client.info = require("./assets/version.json");
 
 // Deploy slash commands to Discord.
 client.utils.deploy.deploy(commandsList);
