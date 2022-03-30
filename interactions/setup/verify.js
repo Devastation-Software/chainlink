@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const DJSBuilders = require("@discordjs/builders");
 
-
 module.exports = {
     perms: {
         bot: ["EMBED_LINKS", "SEND_MESSAGES"], user: ["MANAGE_GUILD"],
@@ -17,7 +16,7 @@ module.exports = {
 
         let embed = new DJSBuilders.Embed()
             .setColor(39423)
-            .setTitle("Checking your code...");
+            .setTitle("Checking your code...")
             .setDescription(`I am checking the code you provided. Please wait.`);
 
         let pendingBridge = client.bridges.getBridgeByCode(code);
