@@ -42,7 +42,7 @@ module.exports = {
     const channel = interaction.channelId;
     const guild = interaction.guildId;
 
-    const embed = new Discord.MessageEmbed()
+    const embed = new DJSBuilders.Embed()
       .setColor("#0099ff")
       .setTitle("Creating a new bridge...")
       .setDescription(
