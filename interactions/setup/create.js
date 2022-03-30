@@ -43,7 +43,7 @@ module.exports = {
     const guild = interaction.guildId;
 
     const embed = new DJSBuilders.Embed()
-      .setColor("#0099ff")
+      .setColor(39423)
       .setTitle("Creating a new bridge...")
       .setDescription(
         `Please wait while I create a new bridge between ${
@@ -89,7 +89,7 @@ module.exports = {
         `Created by ${client.user.tag}`,
         client.user.displayAvatarURL()
       );
-      embed.setColor("#00ff44");
+      embed.setColor(65348);
     } else {
       embed.setTitle("Bridge creation failed!");
       embed.setDescription(
@@ -97,7 +97,7 @@ module.exports = {
           type === "channel" ? "channels" : "servers"
         }.`
       );
-      embed.setColor("#ff0000");
+      embed.setColor(16711680);
     }
 
     message.edit(embed);
