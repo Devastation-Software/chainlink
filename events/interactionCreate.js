@@ -14,7 +14,7 @@ module.exports = async (interaction) => {
   command.perms.bot.forEach(async perm => {
     let guild = await client.guilds.fetch(interaction.guild.id);
     let member = await guild.members.fetch(client.user.id);
-    if (!member.hasPermission(perm)) {
+    if (!member.permissions.has(perm)) {
       await interaction.reply("❌ I don't have the permission to do that! I need the  `" + perm + "` permission.");
       return;
     }
