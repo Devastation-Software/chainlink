@@ -35,6 +35,73 @@ module.exports = {
         .setRequired(true)
     ),
   async execute(interaction, client) {
+    const {
+      type,
+      direction,
+      endpoint,
+    } = interaction.getOptions();
 
+    const channel = interaction.channelId;
+    const guild = interaction.guildId;
+
+    const embed = new Discord.MessageEmbed()
+      .setColor("#0099ff")
+      .setTitle("Creating a new bridge...")
+      .setDescription(
+        `Please wait while I create a new bridge between ${
+          type === "channel" ? "channels" : "servers"
+        }.`
+      )
+
+    const message = await channel.send(embed);
+
+    const bridge = await client.bridge.create(
+      type,
+      direction,
+      endpoint,
+      guild,
+      channel
+    );
+
+    if (bridge) {
+      embed.setTitle("Bridge created!");
+      embed.setDescription(
+        `A new bridge has been created between ${
+          type === "channel" ? "channels" : "servers"
+        }.`
+      );
+      embed.addField(
+        "Bridge ID",
+        `${bridge.id}`,
+        true
+      );
+      embed.addField(
+        "Endpoint",
+        `${type === "channel" ? "Channel" : "Server"}: ${
+          type === "channel" ? bridge.channel.name : bridge.server.name
+        }`,
+        true
+      );
+      embed.addField(
+        "Direction",
+        `${direction === "both" ? "Both directions" : direction}`,
+        true
+      );
+      embed.setFooter(
+        `Created by ${client.user.tag}`,
+        client.user.displayAvatarURL()
+      );
+      embed.setColor("#00ff44");
+    } else {
+      embed.setTitle("Bridge creation failed!");
+      embed.setDescription(
+        `I was unable to create a new bridge between ${
+          type === "channel" ? "channels" : "servers"
+        }.`
+      );
+      embed.setColor("#ff0000");
+    }
+
+    message.edit(embed);
   },
 };
