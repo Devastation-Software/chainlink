@@ -1,14 +1,17 @@
 const {
   MessageActionRow,
   Message,
-  MessageEmbed,
   MessageButton,
 } = require("discord.js");
+
+const {
+  Embed
+} = require("@discordjs/builders");
 
 /**
  * Creates a pagination embed
  * @param {Interaction} interaction
- * @param {MessageEmbed[]} pages
+ * @param {Embed[]} pages
  * @param {MessageButton[]} buttonList
  * @param {number} timeout
  * @returns

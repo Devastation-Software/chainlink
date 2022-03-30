@@ -11,7 +11,7 @@ const client = new Discord.Client({
 });
 
 client.customEmojis = emojis;
-client.brandColor = "#3b1b72";
+client.brandColor = 16746496;
 client.config = config;
 
 client.utils = utils;

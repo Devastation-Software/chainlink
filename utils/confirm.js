@@ -24,10 +24,10 @@ module.exports = async function confirmEmbed(
         .setLabel("Yes"),
       new MessageButton().setCustomId("no").setStyle("DANGER").setLabel("No"),
     ];
-    let Embed = new MessageEmbed()
+    let embed = new Embed()
       .setTitle(title)
       .setDescription(awaitDesc)
-      .setColor("#FFFF00");
+      .setColor(16776960);
 
     const row = new MessageActionRow().addComponents(buttonList);
 
@@ -53,13 +53,13 @@ module.exports = async function confirmEmbed(
         newEmbed
           .setTitle("Canceled")
           .setDescription(failDesc)
-          .setColor("#FF0000");
+          .setColor(16711680);
       }
       if (i.customId == "yes") {
         newEmbed
           .setTitle("Success")
           .setDescription(successDesc)
-          .setColor("#00FF00");
+          .setColor(65280);
       }
       await i.deferUpdate();
       if (!curPage.deleted) {
@@ -86,10 +86,6 @@ module.exports = async function confirmEmbed(
           buttonList[0].setDisabled(true),
           buttonList[1].setDisabled(true)
         );
-        let embed = new MessageEmbed()
-          .setTitle("Timed Out")
-          .setDescription("This command has timed out.")
-          .setColor("#FF8800");
         curPage.edit({
           embeds: [embed],
           components: [disabledRow],
