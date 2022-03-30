@@ -3,7 +3,7 @@ const fs = require('fs');
 const uuid = require('./uuid');
 
 module.exports = {
-    create (type, direction, endpoint, guild, channel) {
+    create: function (type, direction, endpoint, guild, channel) {
         let bridges = JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'));
         let randomUUID = uuid.generate();
         bridges[randomUUID] = {
@@ -14,9 +14,9 @@ module.exports = {
             channel: channel
         };
         fs.writeFileSync('./data/bridges.json', JSON.stringify(bridges));
-    }
+    },
 
-    findBridgesByChannel (channelID) {
+    findBridgesByChannel: function (channelID) {
         let bridges = JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'));
         let foundBridges = [];
         for (let bridge in bridges) {
@@ -25,9 +25,9 @@ module.exports = {
             }
         }
         return foundBridges;
-    }
+    },
 
-    findBridgesByGuild (guildID) {
+    findBridgesByGuild: function (guildID) {
         let bridges = JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'));
         let foundBridges = [];
         for (let bridge in bridges) {
@@ -36,9 +36,9 @@ module.exports = {
             }
         }
         return foundBridges;
-    }
+    },
 
-    findBridgesByEndpoint (endpoint) {
+    findBridgesByEndpoint: function (endpoint) {
         let bridges = JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'));
         let foundBridges = [];
         for (let bridge in bridges) {

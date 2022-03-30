@@ -52,7 +52,7 @@ module.exports = {
         }.`
       )
 
-    const message = await interaction.reply({ embeds: [embed]});
+    const reply = await interaction.reply({ embeds: [embed]});
 
     const bridge = await client.bridge.create(
       type,
@@ -101,6 +101,6 @@ module.exports = {
       embed.setColor(16711680);
     }
 
-    await interaction.editReply({ embeds: [embed]});
+    await reply.edit({ embeds: [embed]});
   },
 };
