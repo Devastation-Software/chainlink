@@ -43,7 +43,7 @@ module.exports = {
     const channel = interaction.channelId;
     const guild = interaction.guildId;
 
-    const embed = new DJSBuilders.Embed()
+    let embed = new DJSBuilders.Embed()
       .setColor(39423)
       .setTitle("Creating a new bridge...")
       .setDescription(
@@ -52,7 +52,11 @@ module.exports = {
         }.`
       )
 
-    const reply = await interaction.reply({ embeds: [embed]});
+    await interaction.deferReply();
+
+    const curPage = await interaction.editReply({
+      embeds: [embed],
+    });
 
     const bridge = await client.bridges.create(
       type,
@@ -101,6 +105,6 @@ module.exports = {
       embed.setColor(16711680);
     }
 
-    await reply.edit({ embeds: [embed]});
+    await curPage.edit({ embeds: [embed]});
   },
 };
