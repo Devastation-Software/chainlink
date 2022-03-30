@@ -35,11 +35,9 @@ module.exports = {
         .setRequired(true)
     ),
   async execute(interaction, client) {
-    const {
-      type,
-      direction,
-      endpoint,
-    } = interaction.getOptions();
+    const type = interaction.options.getString("type");
+    const direction = interaction.options.getString("direction");
+    const endpoint = interaction.options.getString("endpoint");
 
     const channel = interaction.channelId;
     const guild = interaction.guildId;
