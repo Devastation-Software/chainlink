@@ -15,9 +15,9 @@ module.exports = async function confirmEmbed(
     let buttonList = [
       new ButtonComponent()
         .setCustomId("yes")
-        .setStyle("SUCCESS")
+        .setStyle(3)
         .setLabel("Yes"),
-      new ButtonComponent().setCustomId("no").setStyle("DANGER").setLabel("No"),
+      new ButtonComponent().setCustomId("no").setStyle(4).setLabel("No"),
     ];
     let embed = new Embed()
       .setTitle(title)

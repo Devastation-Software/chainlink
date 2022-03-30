@@ -15,26 +15,26 @@ const {
 const paginationEmbed = async (interaction, pages, timeout = 120000) => {
   if (!pages) throw new Error("No pages for paginationEmbed!.");
   buttonList = [
-    new ButtonComponent()
-      .setCustomId("tobeginning")
-      .setStyle("PRIMARY")
-      .setEmoji("947923816129130556"),
-    new ButtonComponent()
-      .setCustomId("last")
-      .setStyle("PRIMARY")
-      .setEmoji("947923816062013471"),
-    new ButtonComponent()
-      .setCustomId("discard")
-      .setEmoji("947923816120733747")
-      .setStyle("DANGER"),
-    new ButtonComponent()
-      .setCustomId("next")
-      .setEmoji("947923816363982888")
-      .setStyle("PRIMARY"),
-    new ButtonComponent()
-      .setCustomId("toend")
-      .setEmoji("947923816158494831")
-      .setStyle("PRIMARY"),
+      new ButtonComponent()
+          .setCustomId("tobeginning")
+          .setStyle(1)
+          .setEmoji("947923816129130556"),
+      new ButtonComponent()
+          .setCustomId("last")
+          .setStyle(1)
+          .setEmoji("947923816062013471"),
+      new ButtonComponent()
+          .setCustomId("discard")
+          .setEmoji("947923816120733747")
+          .setStyle(4),
+      new ButtonComponent()
+          .setCustomId("next")
+          .setEmoji("947923816363982888")
+          .setStyle(1),
+      new ButtonComponent()
+          .setCustomId("toend")
+          .setEmoji("947923816158494831")
+          .setStyle(1),
   ];
 
   let page = 0;
