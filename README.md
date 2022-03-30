@@ -1,3 +1,3 @@
-# DisProxify
+# Chainlink
 
-A message-proxying bot between Discord servers!
+Build a chain link between Discord channels and even Discord servers!
