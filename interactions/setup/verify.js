@@ -32,11 +32,18 @@ module.exports = {
             embed.setDescription(`I couldn't find a bridge with that code. Please try again and make sure you typed it correctly.`);
             embed.setColor(16711680);
         } else {
+            let endpointGID;
+            if (pendingBridge.type === "channel") {
+                let endpointGuild = await client.guilds.fetch(pendingBridge.endpoint);
+                endpointGID = endpointGuild.id;
+            } else {
+                endpointGID = pendingBridge.endpoint;
+            }
             if (pendingBridge.verified) {
                 embed.setTitle("Bridge verification failed!");
                 embed.setDescription(`That bridge has already been verified.`);
                 embed.setColor(16711680);
-            } else if (pendingBridge.guild !== interaction.guildId) {
+            } else if (endpointGID !== interaction.guildId) {
                 embed.setTitle("Bridge verification failed!");
                 embed.setDescription(`That bridge is not in this server.`);
                 embed.setColor(16711680);
