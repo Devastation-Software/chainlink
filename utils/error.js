@@ -3,7 +3,7 @@ const uuid = require('./uuid');
 
 module.exports = {
     write: function (err) {
-        let errors = fs.readFileSync('errors.json', { encoding: 'utf8' });
+        let errors = fs.readFileSync('./data/errors.json', { encoding: 'utf8' });
         errors = JSON.parse(errors);
 
         let randomUUID = uuid.generate();
@@ -17,24 +17,24 @@ module.exports = {
 
         errors.push(errorStructure);
         errors = JSON.stringify(errors);
-        fs.writeFileSync('errors.json', errors);
+        fs.writeFileSync('./data/errors.json', errors);
         return "err-" + randomUUID;
     },
 
     loadAll: function () {
-        let errors = fs.readFileSync('errors.json', { encoding: 'utf8' });
+        let errors = fs.readFileSync('./data/errors.json', { encoding: 'utf8' });
         errors = JSON.parse(errors);
         return errors;
     },
 
     loadByErrorId: function (id) {
-        let errors = fs.readFileSync('errors.json', { encoding: 'utf8' });
+        let errors = fs.readFileSync('./data/errors.json', { encoding: 'utf8' });
         errors = JSON.parse(errors);
         return errors.find(error => error.id === id);
     },
 
     count: function () {
-        let errors = fs.readFileSync('errors.json', { encoding: 'utf8' });
+        let errors = fs.readFileSync('./data/errors.json', { encoding: 'utf8' });
         errors = JSON.parse(errors);
         return errors.length;
     },
