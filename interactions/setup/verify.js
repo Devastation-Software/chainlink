@@ -35,8 +35,8 @@ module.exports = {
         } else {
             let endpointGID;
             if (pendingBridge.type === "channel") {
-                let endpointGuild = await client.guilds.fetch(pendingBridge.endpoint);
-                endpointGID = endpointGuild.id;
+                let endpointChannel = await client.channels.fetch(pendingBridge.endpoint);
+                endpointGID = endpointChannel.guild.id;
             } else {
                 endpointGID = pendingBridge.endpoint;
             }
