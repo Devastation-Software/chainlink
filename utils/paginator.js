@@ -58,13 +58,14 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
         content: `Page ${page + 1} / ${pages.length}`, embeds: [pages[page]], components: [row], fetchReply: true,
     });
 
-    const filter = (i) => i.customId === buttonList[0].customId || i.customId === buttonList[1].customId || i.customId === buttonList[2].customId || i.customId === buttonList[3].customId || i.customId === buttonList[4].customId;
+    const filter = (i) => i != null
 
     const collector = await curPage.createMessageComponentCollector({
         filter, time: timeout,
     });
 
     collector.on("collect", async (i) => {
+        console.log(i.emoji.name);
         switch (i.customId) {
             case buttonList[0].customId:
                 page = 0;
