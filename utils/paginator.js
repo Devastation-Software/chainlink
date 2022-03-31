@@ -29,7 +29,7 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
           .setStyle(4),
       new ButtonComponent()
           .setCustomId("next")
-          .setEmote({ name: "arrowright", id: "947923816363982888", animated: false })
+          .setEmoji({ name: "arrowright", id: "947923816363982888", animated: false })
           .setStyle(1),
       new ButtonComponent()
           .setCustomId("toend")
