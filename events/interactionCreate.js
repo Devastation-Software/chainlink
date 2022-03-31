@@ -12,7 +12,7 @@ module.exports = async (interaction) => {
   const options = interaction.options;
 
   command.perms.bot.forEach(perm => {
-    let clientMember = client.guilds.cache.get(interaction.guild.id).members.get(client.user.id);
+    let clientMember = client.guilds.cache.get(interaction.guild.id).members.cache.get(client.user.id);
     if (!clientMember.hasPermission(perm)) {
       return interaction.reply("❌ I don't have the permission to do that! I need the  `" + perm + "` permission.");
     }
