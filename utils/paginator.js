@@ -48,9 +48,8 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
   }
 
   const curPage = await interaction.editReply({
-    embeds: [pages[page].setFooter({
-      text: `Page ${page + 1} / ${pages.length}`
-    })],
+    content: `Page ${page + 1} / ${pages.length}`,
+    embeds: [pages[page]],
     components: [row],
     fetchReply: true,
   });
@@ -89,9 +88,8 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
     }
     await i.deferUpdate();
     await i.editReply({
-      embeds: [pages[page].setFooter({
-        text: `Page ${page + 1} / ${pages.length}`
-      })],
+      content: `Page ${page + 1} / ${pages.length}`,
+      embeds: [pages[page]],
       components: [row],
     });
     collector.resetTimer();
@@ -108,9 +106,8 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
           buttonList[4].setDisabled(true)
         );
         curPage.edit({
-          embeds: [pages[page].setFooter({
-            text: `Page ${page + 1} / ${pages.length}`
-          })],
+          content: `Page ${page + 1} / ${pages.length}`,
+          embeds: [pages[page]],
           components: [disabledRow],
         });
       }
