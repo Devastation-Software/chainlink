@@ -33,7 +33,7 @@ module.exports = {
             });
           });
 
-          await interaction.reply(embed);
+          await interaction.reply({ embeds: [embed]});
           return;
         } else {
           // Multiple pages, split into 25 error fields per page
