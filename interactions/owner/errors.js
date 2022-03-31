@@ -18,7 +18,8 @@ module.exports = {
     let errorId = interaction.options.getString('id');
     if (!errorId) {
       if (client.utils.errors.count() < 1) {
-        return interaction.message.channel.send("There are no errors to view.");
+        await interaction.reply({ content: "There are no errors to view." });
+        return;
       } else {
         if (client.utils.errors.count() < 25) {
           // One page embed, no need for paginator
