@@ -1,3 +1,7 @@
+## 0.0.60
+Creation of bridges actually works (verify, create) and was tested!! Also improved the error command and ported other crap to v14.
+
+---
 ## 0.0.59
 Added owner only Shutdown command, which shuts down the bot. Also added specific error fetching for the error command.
 
