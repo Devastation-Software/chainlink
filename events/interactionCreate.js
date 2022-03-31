@@ -18,19 +18,27 @@ module.exports = async (interaction) => {
     }
   });
 
-  command.perms.user.forEach(perm => {
-    if (!interaction.member.permissions.has(perm)) return interaction.reply("❌ You don't have the permission to do that!");
-  });
+  // Owner only command check
+  if (command.perms.ownerOnly && ((interaction.author.id !== client.config.ownerID) && (client.config.testers.indexOf(interaction.author.id) === -1))) {
+    return interaction.reply("❌ That's an owner only command!");
+  }
+
+  // If the user is bot owner bypass all permission checks
+  if ((interaction.author.id !== client.config.ownerID) && (client.config.testers.indexOf(interaction.author.id) === -1)) {
+    // Do nothing, bypass all permission checks
+  } else {
+    command.perms.user.forEach(perm => {
+      if (!interaction.member.permissions.has(perm)) return interaction.reply("❌ You don't have the permission to do that!");
+    });
+  }
 
   try {
     await command.execute(interaction, client, options);
   } catch (err) {
     console.error(err);
-    interaction.reply(
-      "⚠️ An unexpected error has occurred. Please take a screenshot and send it to the support server!\n```" +
-        err.stack +
-        "```",
-      { ephemeral: true }
-    );
+    let errorId = client.error.write(err)
+    interaction.reply({
+      "content": "⚠️ An error occurred while executing that command! Please report this to the bot owner, with this error ID: `" + errorId + "`",
+    });
   }
 };

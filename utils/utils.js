@@ -13,7 +13,7 @@ module.exports = {
   paginator: paginator,
   deploy: deploy,
   confirm: confirm,
-  error: error,
+  errors: error,
   uuid: uuid,
   changelog: changelog
 };

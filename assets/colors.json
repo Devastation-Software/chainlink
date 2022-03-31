@@ -1,0 +1,22 @@
+{
+  "red": 16711680,
+  "orange": 16746496,
+  "yellow": 16776960,
+  "yellowgreen": 8978176,
+  "green": 65280,
+  "greenblue": 65416,
+  "cyan": 65535,
+  "lightblue": 35071,
+  "blue": 255,
+  "bluepurple": 8913151,
+  "purple": 16711935,
+  "magenta": 16711816,
+  "black": 0,
+  "darkgray": 4473924,
+  "gray": 8947848,
+  "lightgray": 12303291,
+  "white": 16777215,
+  "error": 16711680,
+  "pending": 15658530,
+  "success": 65348
+}

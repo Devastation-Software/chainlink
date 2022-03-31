@@ -6,17 +6,19 @@ module.exports = {
         let errors = fs.readFileSync('errors.json', { encoding: 'utf8' });
         errors = JSON.parse(errors);
 
+        let randomUUID = uuid.generate();
+
         let errorStructure = {
           date: new Date(),
           error: err,
           stack: err.stack,
-          id: uuid.generate()
+          id: "err-" + randomUUID
         }
 
         errors.push(errorStructure);
         errors = JSON.stringify(errors);
         fs.writeFileSync('errors.json', errors);
-        return;
+        return "err-" + randomUUID;
     },
 
     loadAll: function () {
@@ -29,6 +31,11 @@ module.exports = {
         let errors = fs.readFileSync('errors.json', { encoding: 'utf8' });
         errors = JSON.parse(errors);
         return errors.find(error => error.id === id);
-    }
+    },
 
+    count: function () {
+        let errors = fs.readFileSync('errors.json', { encoding: 'utf8' });
+        errors = JSON.parse(errors);
+        return errors.length;
+    },
 }

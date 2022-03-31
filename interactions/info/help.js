@@ -34,6 +34,6 @@ module.exports = {
       );
     });
 
-    client.utils.paginator(interaction, embeds);
+    await client.utils.paginator(interaction, embeds);
   },
 };

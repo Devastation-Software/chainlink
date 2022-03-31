@@ -10,20 +10,13 @@ const client = new Discord.Client({
   partials: ["MESSAGE", "CHANNEL"], // Needed to get messages from DM's as well
 });
 
-client.brandColor = 16746496;
-client.config = config;
-
-client.utils = utils;
-
-// Parse changes in real time,
 let commandModules = fs.readFileSync("./assets/modules.json", {
   encoding: "utf8",
 });
+
 commandModules = JSON.parse(commandModules);
 client.modules = Object.keys(commandModules);
-client.bridges = require("./utils/bridge.js");
 
-// The handler for all slash commands, loops over them nested dirs
 commandsList = [];
 
 client.interactions = new Discord.Collection();
@@ -41,8 +34,11 @@ client.modules.forEach((c) => {
 
 // For easy access
 client.commandsList = commandsList;
-
+client.bridges = require("./utils/bridge.js");
 client.info = require("./assets/version.json");
+client.brandColor = 16746496;
+client.config = config;
+client.utils = utils;
 
 // Deploy slash commands to Discord.
 client.utils.deploy.deploy(commandsList);
