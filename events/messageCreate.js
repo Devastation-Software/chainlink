@@ -4,7 +4,6 @@ const Discord = require("discord.js"),
 module.exports = async (message) => {
     let client = message.client;
 
-    console.log(message)
     // Ignore webhooks so loops don't occur
     if (message.webhookID) return;
 
