@@ -13,7 +13,7 @@ const {
 const paginationEmbed = async (interaction, pages, timeout = 120000) => {
     if (!pages) throw new Error("No pages for paginationEmbed!.");
 
-    let buttonList = [new ButtonComponent().setCustomId("tobeginning").setStyle(1).setEmoji({name: "tobeginning", id: "947923816129130556", animated: false}), new ButtonComponent().setCustomId("last").setStyle(1).setEmoji({name: "arrowleft", id: "947923816062013471", animated: false}), new ButtonComponent().setCustomId("discard").setEmoji({name: "x_", id: "947923816120733747", animated: false}).setStyle(4), new ButtonComponent().setCustomId("next").setEmoji({name: "arrowright", id: "947923816363982888", animated: false}).setStyle(1), new ButtonComponent().setCustomId("toend").setEmoji({name: "toend", id: "947923816158494831", animated: false}).setStyle(1));];
+    let buttonList = [new ButtonComponent().setCustomId("tobeginning").setStyle(1).setEmoji({name: "tobeginning", id: "947923816129130556", animated: false}), new ButtonComponent().setCustomId("last").setStyle(1).setEmoji({name: "arrowleft", id: "947923816062013471", animated: false}), new ButtonComponent().setCustomId("discard").setEmoji({name: "x_", id: "947923816120733747", animated: false}).setStyle(4), new ButtonComponent().setCustomId("next").setEmoji({name: "arrowright", id: "947923816363982888", animated: false}).setStyle(1), new ButtonComponent().setCustomId("toend").setEmoji({name: "toend", id: "947923816158494831", animated: false}).setStyle(1))];
 
     let page = 0;
 
