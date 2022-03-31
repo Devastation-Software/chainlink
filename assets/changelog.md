@@ -1,3 +1,7 @@
+## 1.0.0
+Complete basic functionality! Create bridges, proxy messages, etc...
+
+---
 ## 0.0.60
 Creation of bridges actually works (verify, create) and was tested!! Also improved the error command and ported other crap to v14.
 
