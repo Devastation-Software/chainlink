@@ -53,6 +53,15 @@ module.exports = {
                 client.bridges.verifyBridge(pendingBridge.uuid);
                 embed.setTitle("Bridge verification successful!");
                 embed.setDescription(`The bridge is complete!`);
+                embed.addFields({
+                    name: "Bridge ID", value: pendingBridgeID,
+                }, {
+                    name: "Endpoint", value: type === "channel" ? `<#${pendingBridge.endpoint}>` : `<${pendingBridge.endpoint}>`,
+                });
+                embed.setFooter({
+                    text: `Created by ${interaction.user.tag}`,
+                    iconURL: interaction.user.displayAvatarURL()
+                });
                 embed.setColor(65348);
             }
         }
