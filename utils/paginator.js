@@ -48,7 +48,9 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
   }
 
   const curPage = await interaction.editReply({
-    embeds: [pages[page].setFooter(`Page ${page + 1} / ${pages.length}`)],
+    embeds: [pages[page].setFooter({
+      text: `Page ${page + 1} / ${pages.length}`
+    })],
     components: [row],
     fetchReply: true,
   });
