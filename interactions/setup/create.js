@@ -44,7 +44,7 @@ module.exports = {
         });
 
         // Check if the bot is in the endpoint server
-        const endpointGuild = client.guilds.cache.get(endpoint);
+        const endpointGuild = await client.guilds.fetch(endpoint);
         if (!endpointGuild) {
             embed.setTitle("Bridge creation failed!");
             embed.setDescription(`Please invite me to the endpoint server and try again.`);
