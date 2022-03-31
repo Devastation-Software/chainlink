@@ -65,7 +65,7 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
     });
 
     collector.on("collect", async (i) => {
-        console.log(i.emoji.name);
+        console.log(i);
         switch (i.customId) {
             case buttonList[0].customId:
                 page = 0;
