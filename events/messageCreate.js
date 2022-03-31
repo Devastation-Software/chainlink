@@ -4,6 +4,12 @@ const Discord = require("discord.js"),
 module.exports = async (message) => {
     let client = message.client;
 
+    // Ignore webhooks so loops don't occur
+    if (message.webhookID) return;
+
+    // Ignore my own messages
+    if (message.author.id === client.user.id) return;
+
     let channelBridges = client.utils.bridges.findBridgesByChannel(message.channel.id);
 
     for (const bridge of channelBridges) {
