@@ -1,9 +1,8 @@
 const Discord = require("discord.js"), fs = require("fs");
 
 module.exports = async (interaction) => {
+    let client = interaction.client;
     try {
-
-        let client = interaction.client;
 
         if (!interaction.isCommand()) return;
 
