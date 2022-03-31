@@ -59,6 +59,13 @@ module.exports = {
         const bridge = client.bridges.create(type, direction, endpoint, guild, channel);
 
         // If the bridge's two endpoints are in the same server, there's no need to request verification.
+        let endpointGuildId;
+        if (type === "channel") {
+            let endpointChannel = await client.channels.fetch(endpoint);
+            endpointGuildId = endpointChannel.guild.id;
+        } else {
+            endpointGuildId = await client.guilds.fetch(endpoint);
+        }
         if ((type === "channel" && guild === client.channels.cache.get(endpoint).guild.id) || (type === "server" && guild === client.guilds.cache.get(endpoint).id)) {
             if (bridge) {
                 client.bridges.verifyBridge(bridge);
