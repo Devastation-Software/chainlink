@@ -6,7 +6,7 @@ const config = require("./config/config.json");
 const utils = require("./utils/utils.js");
 
 const client = new Discord.Client({
-  intents: 32767,
+  intents: 98303,
   partials: [Discord.Partials.Message, Discord.Partials.Channel], // Needed to get messages from DM's as well
 });
 
