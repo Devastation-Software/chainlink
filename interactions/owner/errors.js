@@ -32,6 +32,9 @@ module.exports = {
               value: "`" +error.error + "`",
             });
           });
+
+          await interaction.reply(embed);
+          return;
         } else {
           // Multiple pages, split into 25 error fields per page
           let embeds = [];
