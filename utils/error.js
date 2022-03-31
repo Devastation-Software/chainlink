@@ -10,7 +10,7 @@ module.exports = {
 
         let errorStructure = {
           date: Date.now(),
-          error: err,
+          error: err.toString(),
           stack: err.stack,
           id: "err-" + randomUUID
         }

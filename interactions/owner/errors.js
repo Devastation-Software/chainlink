@@ -81,7 +81,7 @@ module.exports = {
         })
         .addField({
           name: "Stacktrace",
-          value: error.stack,
+          value: "```" + error.stack + "```",
         });
       await interaction.reply({ embeds: [embed] });
     }
