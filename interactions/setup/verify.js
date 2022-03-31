@@ -39,6 +39,7 @@ module.exports = {
             } else {
                 endpointGID = pendingBridge.endpoint;
             }
+            console.log(endpointGID)
             if (pendingBridge.verified) {
                 embed.setTitle("Bridge verification failed!");
                 embed.setDescription(`That bridge has already been verified.`);
