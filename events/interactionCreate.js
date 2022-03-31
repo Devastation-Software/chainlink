@@ -36,7 +36,7 @@ module.exports = async (interaction) => {
     await command.execute(interaction, client, options);
   } catch (err) {
     console.error(err);
-    let errorId = client.error.write(err)
+    let errorId = client.utils.errors.write(err)
     interaction.reply({
       "content": "⚠️ An error occurred while executing that command! Please report this to the bot owner, with this error ID: `" + errorId + "`",
     });
