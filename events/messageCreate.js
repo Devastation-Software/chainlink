@@ -1,5 +1,38 @@
 const Discord = require("discord.js"),
   fs = require("fs");
 
-module.exports = (message) => {
+module.exports = async (message) => {
+    let client = message.client;
+
+    let channelBridges = client.utils.bridges.findBridgesByChannel(message.channel.id);
+
+    for (const bridge of channelBridges) {
+        if (bridge.verified) {
+            if (bridge.type === "channel") {
+                // Simple sending by message, no webhooks or images yet
+                if (bridge.direction === "both" || bridge.direction === "there") {
+                    let endpointChannel = await client.channels.fetch(bridge.endpoint);
+                    endpointChannel.send("**" + message.author.tag + "**: " + message.content);
+                }
+            } else {
+                // No support for guild bridges yet
+            }
+        }
+    }
+
+    let endpointBridges = client.utils.bridges.findBridgesByEndpoint(message.channel.id);
+
+    for (const bridge of endpointBridges) {
+        if (bridge.verified) {
+            if (bridge.type === "channel") {
+                // Simple sending by message, no webhooks or images yet
+                if (bridge.direction === "both" || bridge.direction === "here") {
+                    let endpointChannel = await client.channels.fetch(bridge.channel);
+                    endpointChannel.send("**" + message.author.tag + "**: " + message.content);
+                }
+            } else {
+                // No support for guild bridges yet
+            }
+        }
+    }
 };
