@@ -44,8 +44,24 @@ module.exports = {
         });
 
         // Check if the bot is in the endpoint server
-        const endpointGuild = await client.guilds.fetch(endpoint);
-        if (!endpointGuild) {
+        let endpointGuildId;
+        try {
+            if (type === "channel") {
+                let endpointChannel = await client.channels.fetch(endpoint);
+                endpointGuildId = endpointChannel.guild.id;
+            } else {
+                endpointGuildId = await client.guilds.fetch(endpoint);
+            }
+            if (!endpointGuildId) {
+                embed.setTitle("Bridge creation failed!");
+                embed.setDescription(`Please invite me to the endpoint server and try again.`);
+                embed.setColor(16711680);
+                await curPage.edit({
+                    embeds: [embed],
+                });
+                return;
+            }
+        } catch {
             embed.setTitle("Bridge creation failed!");
             embed.setDescription(`Please invite me to the endpoint server and try again.`);
             embed.setColor(16711680);
@@ -59,13 +75,6 @@ module.exports = {
         const bridge = client.bridges.create(type, direction, endpoint, guild, channel);
 
         // If the bridge's two endpoints are in the same server, there's no need to request verification.
-        let endpointGuildId;
-        if (type === "channel") {
-            let endpointChannel = await client.channels.fetch(endpoint);
-            endpointGuildId = endpointChannel.guild.id;
-        } else {
-            endpointGuildId = await client.guilds.fetch(endpoint);
-        }
         if ((type === "channel" && guild === client.channels.cache.get(endpoint).guild.id) || (type === "server" && guild === client.guilds.cache.get(endpoint).id)) {
             if (bridge) {
                 client.bridges.verifyBridge(bridge);
