@@ -9,7 +9,7 @@ module.exports = {
         let randomUUID = uuid.generate();
 
         let errorStructure = {
-          date: new Date(),
+          date: Date.now(),
           error: err,
           stack: err.stack,
           id: "err-" + randomUUID
