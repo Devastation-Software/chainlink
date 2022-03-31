@@ -19,7 +19,8 @@ module.exports = {
             .setTitle("Checking your code...")
             .setDescription(`I am checking the code you provided. Please wait.`);
 
-        let pendingBridge = client.bridges.getBridgeByCode(code);
+        let pendingBridgeID = client.bridges.getBridgeByCode(code);
+        let pendingBridge = client.bridges.findBridgesByUUID(pendingBridgeID)[0];
 
         await interaction.deferReply();
 

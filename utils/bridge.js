@@ -52,6 +52,17 @@ module.exports = {
         return foundBridges;
     },
 
+    findBridgesByUUID: function (uuid) {
+        let bridges = JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'));
+        let foundBridges = [];
+        for (let bridge in bridges) {
+            if (bridges[bridge].uuid === uuid) {
+                foundBridges.push(bridges[bridge]);
+            }
+        }
+        return foundBridges;
+    },
+
     createCode: function (bridgeUUID) {
         // Create a random verification code to make sure bridges aren't created without both parties agreeing.
         // Generate 6 random numbers between 0 and 9.
