@@ -14,7 +14,10 @@ const {
  */
 const paginationEmbed = async (interaction, pages, timeout = 120000) => {
   if (!pages) throw new Error("No pages for paginationEmbed!.");
-  buttonList = [
+
+  let page = 0;
+
+  const row = new ActionRow().addComponents(
       new ButtonComponent()
           .setCustomId("tobeginning")
           .setStyle(1)
@@ -34,12 +37,8 @@ const paginationEmbed = async (interaction, pages, timeout = 120000) => {
       new ButtonComponent()
           .setCustomId("toend")
           .setEmoji({ name: "toend", id: "947923816158494831", animated: false })
-          .setStyle(1),
-  ];
-
-  let page = 0;
-
-  const row = new ActionRow().addComponents(buttonList);
+          .setStyle(1)
+  );
 
   //has the interaction already been deferred? If not, defer the reply.
 
