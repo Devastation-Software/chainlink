@@ -15,7 +15,7 @@ module.exports = {
       .setName("id")
       .setDescription("An optional error ID to specifically view. Otherwise views the first 250.")),
   async execute(interaction, client) {
-    let errorId = options.getString('id');
+    let errorId = interaction.options.getString('id');
     if (!errorId) {
       if (client.utils.errors.count() < 1) {
         return interaction.message.channel.send("There are no errors to view.");
