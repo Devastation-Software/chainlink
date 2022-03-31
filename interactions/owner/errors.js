@@ -55,7 +55,7 @@ module.exports = {
           }
 
           // Create the paginator
-          await client.utils.paginator(interaction, embeds);
+          client.utils.paginator(interaction, embeds);
         }
       }
     } else {
