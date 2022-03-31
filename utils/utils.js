@@ -7,7 +7,7 @@ const confirm = require("./confirm.js");
 const error = require("./error.js");
 const uuid = require("./uuid.js");
 const changelog = require("./changelog.js");
-
+const bridges = require("./bridge.js");
 module.exports = {
   time: time,
   paginator: paginator,
@@ -15,5 +15,6 @@ module.exports = {
   confirm: confirm,
   errors: error,
   uuid: uuid,
-  changelog: changelog
+  changelog: changelog,
+  bridges: bridges
 };
