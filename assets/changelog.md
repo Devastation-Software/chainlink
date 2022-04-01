@@ -1,3 +1,7 @@
+## 1.0.1
+Bot will now console log a message on startup, hopefully displays a status, and sets status to online when it sends messages through bridges, then back to idle after 120 seconds.
+
+---
 ## 1.0.0
 Complete basic functionality! Create bridges, proxy messages, etc...
 
