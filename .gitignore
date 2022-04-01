@@ -11,3 +11,6 @@ data/*
 # node modules in general
 node_modules
 node_modules/*
+
+config
+config/*
