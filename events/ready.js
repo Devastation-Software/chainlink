@@ -20,12 +20,15 @@ module.exports = async (client) => {
     console.log(`New version ${client.info.build}'s change log has been posted to the change log channel.`);
   }
 
-  client.user.setActivity("messages! Shard " + client.shardId, {
-    type: "LISTENING",
+  client.user.setActivity({
+    name: `/help | ${client.info.version}${client.info.build} | ${client.guilds.cache.size} servers`,
+    type: "WATCHING",
   });
+
   setInterval(() => {
-    client.user.setActivity("messages! Shard " + client.shardId, {
-      type: "LISTENING",
+    client.user.setActivity({
+      name: `/help | ${client.info.version}${client.info.build} | ${client.guilds.cache.size} servers`,
+      type: "WATCHING",
     });
-  }, 15000);
+  }, 30000);
 };

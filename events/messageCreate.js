@@ -4,6 +4,8 @@ const Discord = require("discord.js"),
 module.exports = async (message) => {
     let client = message.client;
 
+    let messageBridged = false;
+
     // Ignore webhooks so loops don't occur
     if (message.webhookID) return;
 
@@ -23,6 +25,7 @@ module.exports = async (message) => {
             } else {
                 // No support for guild bridges yet
             }
+            messageBridged = true;
         }
     }
 
@@ -39,6 +42,16 @@ module.exports = async (message) => {
             } else {
                 // No support for guild bridges yet
             }
+            messageBridged = true;
         }
     }
+
+    if (messageBridged) {
+        client.user.setStatus("online");
+    }
+
+    // Set a timeout, if the bot doesn't see any messages for a while, it will set the bot's status to "idle"
+    setTimeout(() => {
+        client.user.setStatus("idle");
+    }, 120000);
 };
