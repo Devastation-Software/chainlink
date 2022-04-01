@@ -1,6 +1,7 @@
 const fs = require("fs");
 const changeLogChannelId = "958837703254876260";
 const DJSBuilders = require("@discordjs/builders");
+const chalk = require("chalk");
 
 module.exports = async (client) => {
   // Check last checked version file, if it is not the same as the one in version.json, post a message to the change log channel and update the last checked version file
@@ -31,4 +32,6 @@ module.exports = async (client) => {
       type: "WATCHING",
     });
   }, 30000);
+
+  console.log(chalk.green(`${client.user.username} is online!`));
 };
