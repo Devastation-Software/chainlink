@@ -106,9 +106,12 @@ module.exports = {
         fs.writeFileSync('./data/codes.json', JSON.stringify(codes));
     },
 
-    getBridgeConfig: function (bridgeUUID) {
-        let bridges = JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'));
-        return bridges[bridgeUUID].config;
+    getBridgeConfig: function (bridgeUUID, key = null) {
+        if (key === null) {
+            return JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'))[bridgeUUID].config;
+        } else {
+            return JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'))[bridgeUUID].config[key];
+        }
     },
 
     setBridgeConfig: function (bridgeUUID, config) {
