@@ -81,6 +81,8 @@ module.exports = {
 
         const bridge = client.utils.bridges.create(type, direction, endpoint, guild, channel);
 
+        let bridgeObj = client.utils.bridges.findBridgesByUUID(bridge)[0];
+
         // If the bridge's two endpoints are in the same server, there's no need to request verification.
         if ((type === "channel" && guild === client.channels.cache.get(endpoint).guild.id) || (type === "server" && guild === client.guilds.cache.get(endpoint).id)) {
             if (bridge) {
@@ -90,7 +92,7 @@ module.exports = {
                 embed.addFields({
                     name: "Bridge ID", value: bridge,
                 }, {
-                    name: "Bridge", value: client.utils.bridges.bridgeToString(client, bridge),
+                    name: "Bridge", value: client.utils.bridges.bridgeToString(client, bridgeObj),
                 });
                 embed.setFooter({
                     text: `Created by ${interaction.user.tag}`,
