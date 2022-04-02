@@ -140,11 +140,7 @@ module.exports = {
 
             string += "<#" + thisChannel + ">";
             string += " " + client.utils.misc.convertDirectionToEmoji(bridge.direction) + " ";
-            if (thisChannel.guild.id === endpointChannel.guild.id) {
-                string += "<#" + endpointChannel + ">";
-            } else {
-                string += '#' + endpointChannel.name;
-            }
+            string += "<#" + endpointChannel + ">";
         }
 
         return string;
