@@ -88,7 +88,7 @@ module.exports = {
     await interaction.deferReply();
 
     const curPage = await interaction.editReply({
-      embeds: [embed],
+      embeds: [baseEmbed],
     });
 
     const subcommand = interaction.options.getSubcommand();
