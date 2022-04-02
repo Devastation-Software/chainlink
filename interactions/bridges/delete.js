@@ -16,24 +16,13 @@ module.exports = {
   async execute(interaction, client) {
     let id = interaction.options.getString("id");
 
-    let myEmbed = new DJSBuilders.Embed()
-      .setColor(39423)
-      .setTitle("Fetching bridge list...")
-      .setDescription(`Please wait while I fetch the bridge list for you.`);
-
-    await interaction.deferReply();
-
-    const curPage = await interaction.editReply({
-      embeds: [myEmbed],
-    });
-
     let bridge = client.utils.bridges.findBridgesByUUID(id)[0];
 
     if (!bridge) {
       myEmbed.setTitle("Bridge not found.");
       myEmbed.setDescription(`I couldn't find a bridge with the ID of \`${id}\`.`);
       myEmbed.setColor(client.colors.error);
-      await curPage.edit({ embeds: [myEmbed] });
+      await interaction.reply({ embeds: [myEmbed] });
       return;
     } else {
       let update = await client.utils.confirm(
