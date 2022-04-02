@@ -40,8 +40,8 @@ module.exports = {
     let update = await client.utils.confirm(
       interaction,
       "Delete bridge?",
-      "Do you really want to delete the bridge from " + client.utils.bridgeToString(client, bridge) + "? This action cannot be undone.",
-      "Successfully deleted bridge. " + client.utils.bridgeToString(client, bridge).replace("➡️", "⏹️").replace("⬅️", "⏹️").replace("↔️", "⏹️") + " is no longer bridged.",
+      "Do you really want to delete the bridge from " + client.utils.bridges.bridgeToString(client, bridge) + "? This action cannot be undone.",
+      "Successfully deleted bridge. " + client.utils.bridges.bridgeToString(client, bridge).replace("➡️", "⏹️").replace("⬅️", "⏹️").replace("↔️", "⏹️") + " is no longer bridged.",
       "Canceled deploying slash commands to the server."
     );
     if (update) {
