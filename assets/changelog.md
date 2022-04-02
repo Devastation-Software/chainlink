@@ -1,6 +1,7 @@
 ## 1.0.2
 Added configuration command, which provides comprehensive configuration options for your bridge. Also added list command, which lists all bridges in your channel or server.
 
+---
 ## 1.0.1
 Bot will now console log a message on startup, hopefully displays a status, and sets status to online when it sends messages through bridges, then back to idle after 120 seconds.
 
