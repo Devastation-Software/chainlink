@@ -30,7 +30,7 @@ module.exports = {
         "Delete bridge?",
         "Do you really want to delete the bridge from " + client.utils.bridges.bridgeToString(client, bridge) + "? This action cannot be undone.",
         "Successfully deleted bridge. " + client.utils.bridges.bridgeToString(client, bridge).replace("➡️", "⏹️").replace("⬅️", "⏹️").replace("↔️", "⏹️") + " is no longer bridged.",
-        "Canceled deploying slash commands to the server."
+        "Canceled deletion. Nothing has changed."
       );
       if (update) {
         client.utils.bridges.deleteBridge(id);
