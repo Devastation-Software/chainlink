@@ -60,12 +60,6 @@ module.exports = {
       subcommand
         .setName('list')
         .setDescription('List all configuration options for a bridge.')
-        .addStringOption(option =>
-          option
-            .setName('id')
-            .setDescription('The ID of the bridge to list.')
-            .setRequired(true)
-        )
     ),
   async execute(interaction, client) {
     let possibleConfigs = {
