@@ -54,7 +54,7 @@ module.exports = {
           bridgeValue = `${thisChannel} ➡️ ${thatChannel}`;
         } else {
           // Only render first channel name since other one will appear as #deleted-channel.
-          bridgeValue = `${thisChannel.name} ➡️ #${thatChannel.name}`;
+          bridgeValue = `${thisChannel} ➡️ #${thatChannel.name}`;
         }
       }
       embed.addField({
