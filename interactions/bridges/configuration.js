@@ -79,12 +79,6 @@ module.exports = {
         iconURL: client.user.avatarURL(),
       });
 
-    await interaction.deferReply();
-
-    const curPage = await interaction.editReply({
-      embeds: [baseEmbed],
-    });
-
     const subcommand = interaction.options.getSubcommand();
 
     if (subcommand === "reset") {
@@ -122,6 +116,13 @@ module.exports = {
         client.utils.bridges.setBridgeConfig(id, {});
       }
     } else if (subcommand === "set") {
+      await interaction.deferReply();
+
+      const curPage = await interaction.editReply({
+        embeds: [baseEmbed],
+      });
+
+
       const id = interaction.options.getString("id");
       const bridge = client.utils.bridges.findBridgesByUUID(id)[0];
 
@@ -205,6 +206,13 @@ module.exports = {
       });
 
     } else if (subcommand === "get") {
+      await interaction.deferReply();
+
+      const curPage = await interaction.editReply({
+        embeds: [baseEmbed],
+      });
+
+
       const id = interaction.options.getString("id");
       const bridge = client.utils.bridges.findBridgesByUUID(id)[0];
 
@@ -264,6 +272,13 @@ module.exports = {
         embeds: [baseEmbed]
       });
     } else if (subcommand === "list") {
+      await interaction.deferReply();
+
+      const curPage = await interaction.editReply({
+        embeds: [baseEmbed],
+      });
+
+
       // List all configurable options
       const configs = Object.keys(possibleConfigs);
       const configsEmbed = new DJSBuilders.Embed()
