@@ -257,21 +257,15 @@ module.exports = {
         return;
       }
 
-      const value = client.utils.bridges.getBridgeConfig(id, key);
+      let value = client.utils.bridges.getBridgeConfig(id, key);
 
       if (!value) {
-        baseEmbed.setTitle("Error");
-        baseEmbed.setDescription("No value exists for that key.");
-        baseEmbed.setColor(client.colors.error);
-        await curPage.edit({
-          embeds: [baseEmbed]
-        });
-        return;
+        value = possibleConfigs[key].default;
       }
 
       baseEmbed.setTitle("Bridge Configuration");
       baseEmbed.setDescription(`**Key**: ${key}\n**Value**: ${value}`);
-      baseEmbed.setColor(client.colors.default);
+      baseEmbed.setColor(client.brandColor);
       await curPage.edit({
         embeds: [baseEmbed]
       });
