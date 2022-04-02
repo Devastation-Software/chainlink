@@ -71,6 +71,13 @@ module.exports = {
             return;
         }
 
+        // Add to cache so we can convert to string later
+        if (type === "server") {
+            await client.guilds.fetch(endpoint)
+        } else {
+            await client.channels.fetch(endpoint)
+        }
+
 
         const bridge = client.utils.bridges.create(type, direction, endpoint, guild, channel);
 
