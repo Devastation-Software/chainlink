@@ -95,7 +95,7 @@ module.exports = {
 
     if (subcommand === "reset") {
       const id = interaction.options.getString("id");
-      const bridge = client.bridges.get(id);
+      const bridge = client.utils.bridges.findBridgesByUUID(id)[0];
 
       if (!bridge) {
         baseEmbed.setTitle("Error");
@@ -129,7 +129,7 @@ module.exports = {
       }
     } else if (subcommand === "set") {
       const id = interaction.options.getString("id");
-      const bridge = client.bridges.get(id);
+      const bridge = client.utils.bridges.findBridgesByUUID(id)[0];
 
       if (!bridge) {
         baseEmbed.setTitle("Error");
@@ -212,7 +212,7 @@ module.exports = {
 
     } else if (subcommand === "get") {
       const id = interaction.options.getString("id");
-      const bridge = client.bridges.get(id);
+      const bridge = client.utils.bridges.findBridgesByUUID(id)[0];
 
       if (!bridge) {
         baseEmbed.setTitle("Error");
