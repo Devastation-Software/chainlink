@@ -1,3 +1,7 @@
+## 1.0.5
+Bridge info command, get information and config object for a bridge.
+
+---
 ## 1.0.4
 Stuff looks nicer with bridge rendering now, the bridge emoji should match the direction when you created the bridge.
 
