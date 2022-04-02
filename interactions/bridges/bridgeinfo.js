@@ -28,7 +28,7 @@ module.exports = {
       let embed = new DJSBuilders.Embed()
         .setTitle(`Info for bridge ${bridge.uuid}`)
         .setDescription(bridgeString)
-        .setColor(client.colors.default)
+        .setColor(client.brandColor)
         .addField({
           name: "Type",
           value: "`" + bridge.type + "`",
