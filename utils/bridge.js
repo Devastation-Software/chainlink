@@ -126,7 +126,7 @@ module.exports = {
         fs.writeFileSync('./data/bridges.json', JSON.stringify(bridges));
     },
 
-    bridgeToString: function (client, bridge) {
+    bridgeToString: async function (client, bridge) {
         let string = '';
 
         if (bridge.type === "server") {
@@ -135,8 +135,8 @@ module.exports = {
 
             string += thisGuild.name + client.utils.misc.convertDirectionToEmoji(bridge.direction) + endpointGuild.name;
         } else {
-            let thisChannel = client.channels.cache.get(bridge.channel);
-            let endpointChannel = client.channels.cache.get(bridge.endpoint);
+            let thisChannel = await client.channels.fetch(bridge.channel);
+            let endpointChannel = await client.channels.fetch(bridge.endpoint);
 
             string += "<#" + thisChannel + ">";
             string += " " + client.utils.misc.convertDirectionToEmoji(bridge.direction) + " ";

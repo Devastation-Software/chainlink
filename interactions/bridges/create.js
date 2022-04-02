@@ -72,12 +72,12 @@ module.exports = {
         }
 
 
-        const bridge = client.bridges.create(type, direction, endpoint, guild, channel);
+        const bridge = client.utils.bridges.create(type, direction, endpoint, guild, channel);
 
         // If the bridge's two endpoints are in the same server, there's no need to request verification.
         if ((type === "channel" && guild === client.channels.cache.get(endpoint).guild.id) || (type === "server" && guild === client.guilds.cache.get(endpoint).id)) {
             if (bridge) {
-                client.bridges.verifyBridge(bridge);
+                client.utils.bridges.verifyBridge(bridge);
                 embed.setTitle("Bridge created!");
                 embed.setDescription(`A new bridge has been created between ${type === "channel" ? "channels" : "servers"}.`);
                 embed.addFields({
@@ -99,7 +99,7 @@ module.exports = {
         } else {
             if (bridge) {
                 // Tell the user to verify the bridge, and generate a code to send them.
-                const code = client.bridges.createCode(bridge);
+                const code = client.utils.bridges.createCode(bridge);
                 embed.setTitle("Bridge pending...");
                 embed.setDescription("The bridge has been created, but you need to verify it before it can be used.\n\n" +
                     `Please use /verify in the other server with the following code: \`${code}\``);
