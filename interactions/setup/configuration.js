@@ -264,7 +264,7 @@ module.exports = {
       }
 
       baseEmbed.setTitle("Bridge Configuration");
-      baseEmbed.setDescription(`**Key**: ${key}\n**Value**: ${value}`);
+      baseEmbed.setDescription(`**Key**: ${key}\n**Value**: ${value.toString()}`);
       baseEmbed.setColor(client.brandColor);
       await curPage.edit({
         embeds: [baseEmbed]
@@ -280,7 +280,7 @@ module.exports = {
       for (const config of configs) {
         configsEmbed.addField({
           name: config,
-          value: possibleConfigs[config].description + "\n\n" + "**Options**: " + possibleConfigs[config].options.join(", ") + "\n\n" + "**Default**: " + possibleConfigs[config].default
+          value: possibleConfigs[config].description + "\n" + "**Options**: `" + possibleConfigs[config].options.join("`, `") + "`\n" + "**Default**: `" + possibleConfigs[config].default + "`"
         });
       }
 
