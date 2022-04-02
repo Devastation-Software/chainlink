@@ -4,6 +4,8 @@ const {
 
 module.exports = async function confirmEmbed(interaction, title, awaitDesc, successDesc, failDesc) {
     return new Promise(async (resolve, reject) => {
+        let done = false;
+
         let embed = new Embed()
             .setTitle(title)
             .setDescription(awaitDesc)
@@ -29,8 +31,10 @@ module.exports = async function confirmEmbed(interaction, title, awaitDesc, succ
             filter, time: 30_000,
         });
 
+        let newEmbed = new Embed();
+
         collector.on("collect", async (i) => {
-            let newEmbed = new Embed();
+
             if (i.customId == "no") {
                 newEmbed
                     .setTitle("Canceled")
@@ -43,6 +47,7 @@ module.exports = async function confirmEmbed(interaction, title, awaitDesc, succ
                     .setDescription(successDesc)
                     .setColor(65280);
             }
+            done = true;
             await i.deferUpdate();
             if (!curPage.deleted) {
                 const disabledRow = new ActionRow().addComponents(buttonList[0].setDisabled(true), buttonList[1].setDisabled(true));
@@ -59,13 +64,24 @@ module.exports = async function confirmEmbed(interaction, title, awaitDesc, succ
         });
 
         collector.on("end", async () => {
-            if (!curPage.deleted) {
-                const disabledRow = new ActionRow().addComponents(buttonList[0].setDisabled(true), buttonList[1].setDisabled(true));
-                curPage.edit({
-                    embeds: [embed], components: [disabledRow],
-                });
+            if (done === true) {
+                if (!curPage.deleted) {
+                    const disabledRow = new ActionRow().addComponents(buttonList[0].setDisabled(true), buttonList[1].setDisabled(true));
+                    curPage.edit({
+                        embeds: [newEmbed], components: [disabledRow],
+                    });
+                }
+                resolve(false);
+            } else {
+                if (!curPage.deleted) {
+                    const disabledRow = new ActionRow().addComponents(buttonList[0].setDisabled(true), buttonList[1].setDisabled(true));
+                    curPage.edit({
+                        embeds: [embed], components: [disabledRow],
+                    });
+                }
+                resolve(false);
             }
-            resolve(false);
+
         });
         return curPage;
     });
