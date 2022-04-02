@@ -27,7 +27,7 @@ module.exports = {
       embeds: [myEmbed],
     });
 
-    let bridge = client.utils.bridges.findBridgesByUUID(id);
+    let bridge = client.utils.bridges.findBridgesByUUID(id)[0];
 
     if (!bridge) {
       myEmbed.setTitle("Bridge not found.");
@@ -35,17 +35,17 @@ module.exports = {
       myEmbed.setColor(client.colors.error);
       await curPage.edit({ embeds: [myEmbed] });
       return;
-    }
-
-    let update = await client.utils.confirm(
-      interaction,
-      "Delete bridge?",
-      "Do you really want to delete the bridge from " + client.utils.bridges.bridgeToString(client, bridge) + "? This action cannot be undone.",
-      "Successfully deleted bridge. " + client.utils.bridges.bridgeToString(client, bridge).replace("➡️", "⏹️").replace("⬅️", "⏹️").replace("↔️", "⏹️") + " is no longer bridged.",
-      "Canceled deploying slash commands to the server."
-    );
-    if (update) {
-      client.utils.bridges.deleteBridge(id);
+    } else {
+      let update = await client.utils.confirm(
+        interaction,
+        "Delete bridge?",
+        "Do you really want to delete the bridge from " + client.utils.bridges.bridgeToString(client, bridge) + "? This action cannot be undone.",
+        "Successfully deleted bridge. " + client.utils.bridges.bridgeToString(client, bridge).replace("➡️", "⏹️").replace("⬅️", "⏹️").replace("↔️", "⏹️") + " is no longer bridged.",
+        "Canceled deploying slash commands to the server."
+      );
+      if (update) {
+        client.utils.bridges.deleteBridge(id);
+      }
     }
   },
 };
