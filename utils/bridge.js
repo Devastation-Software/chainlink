@@ -139,7 +139,7 @@ module.exports = {
             let endpointChannel = client.channels.cache.get(bridge.endpoint);
 
             string += "<#" + thisChannel + ">";
-            string += client.utils.misc.convertDirectionToEmoji(bridge.direction);
+            string += " " + client.utils.misc.convertDirectionToEmoji(bridge.direction) + " ";
             if (thisChannel.guild.id === endpointChannel.guild.id) {
                 string += "<#" + endpointChannel + ">";
             } else {
