@@ -83,7 +83,7 @@ module.exports = {
                 embed.addFields({
                     name: "Bridge ID", value: bridge,
                 }, {
-                    name: "Endpoint", value: type === "channel" ? `<#${endpoint}>` : `<${endpoint}>`,
+                    name: "Bridge", value: client.utils.bridges.bridgeToString(client, bridge),
                 });
                 embed.setFooter({
                     text: `Created by ${interaction.user.tag}`,

@@ -119,4 +119,34 @@ module.exports = {
         bridges[bridgeUUID].config = config;
         fs.writeFileSync('./data/bridges.json', JSON.stringify(bridges));
     },
+
+    deleteBridge: function (bridgeUUID) {
+        let bridges = JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'));
+        delete bridges[bridgeUUID];
+        fs.writeFileSync('./data/bridges.json', JSON.stringify(bridges));
+    },
+
+    bridgeToString: function (client, bridge) {
+        let string = '';
+
+        if (bridge.type === "server") {
+            let thisGuild = client.guilds.cache.get(bridge.guild);
+            let endpointGuild = client.guilds.cache.get(bridge.endpoint);
+
+            string += thisGuild.name + client.utils.misc.convertDirectionToEmoji(bridge.direction) + endpointGuild.name;
+        } else {
+            let thisChannel = client.channels.cache.get(bridge.channel);
+            let endpointChannel = client.channels.cache.get(bridge.endpoint);
+
+            string += thisChannel;
+            string += client.utils.misc.convertDirectionToEmoji(bridge.direction);
+            if (thisChannel.guild.id === endpointChannel.guild.id) {
+                string += endpointChannel;
+            } else {
+                string += '#' + endpointChannel.name;
+            }
+        }
+
+        return string;
+    }
 }

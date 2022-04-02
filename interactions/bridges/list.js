@@ -42,31 +42,14 @@ module.exports = {
       .setColor(client.brandColor);
 
     for (let bridge of bridges) {
-      let bridgeValue;
-      if (bridge.type === "server") {
-        let thisServer = await client.guilds.fetch(bridge.guild);
-        let thatServer = await client.guilds.fetch(bridge.endpoint);
-      } else {
-        let thisChannel = await client.channels.fetch(bridge.channel);
-        let thatChannel = await client.channels.fetch(bridge.endpoint);
-        if (thisChannel.guild.id === thatChannel.guild.id) {
-          // Can render both channels as channel mentions.
-          bridgeValue = `${thisChannel} ➡️ ${thatChannel}`;
-        } else {
-          // Only render first channel name since other one will appear as #deleted-channel.
-          bridgeValue = `${thisChannel} ➡️ #${thatChannel.name}`;
-        }
-      }
       embed.addField({
         name: `${bridge.uuid}`,
-        value: bridgeValue,
+        value: client.utils.bridges.bridgeToString(client, bridge),
       });
     }
 
     await curPage.edit({
       embeds: [embed],
     });
-
-
   },
 };

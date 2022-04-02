@@ -1,3 +1,7 @@
+## 1.0.3
+You can now *hopefully* delete your bridges. Also created a dedicated function to render bridge start and endpoint in Discord.
+
+---
 ## 1.0.2
 Added configuration command, which provides comprehensive configuration options for your bridge. Also added list command, which lists all bridges in your channel or server.
 

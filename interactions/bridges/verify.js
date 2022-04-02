@@ -55,7 +55,7 @@ module.exports = {
                 embed.addFields({
                     name: "Bridge ID", value: pendingBridgeID,
                 }, {
-                    name: "Endpoint", value: pendingBridge.type === "channel" ? `<#${pendingBridge.endpoint}>` : `<${pendingBridge.endpoint}>`,
+                    name: "Bridge", value: client.utils.bridges.bridgeToString(client, pendingBridge),
                 });
                 embed.setFooter({
                     text: `Created by ${interaction.user.tag}`,

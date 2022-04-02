@@ -8,6 +8,8 @@ const error = require("./error.js");
 const uuid = require("./uuid.js");
 const changelog = require("./changelog.js");
 const bridges = require("./bridge.js");
+const misc = require("./misc.js");
+
 module.exports = {
   time: time,
   paginator: paginator,
@@ -16,5 +18,6 @@ module.exports = {
   errors: error,
   uuid: uuid,
   changelog: changelog,
-  bridges: bridges
+  bridges: bridges,
+  misc: misc
 };
