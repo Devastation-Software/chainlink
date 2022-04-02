@@ -30,7 +30,7 @@ module.exports = async function confirmEmbed(interaction, title, awaitDesc, succ
         });
 
         collector.on("collect", async (i) => {
-            let newEmbed = new MessageEmbed();
+            let newEmbed = new Embed();
             if (i.customId == "no") {
                 newEmbed
                     .setTitle("Canceled")
