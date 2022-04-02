@@ -1,3 +1,7 @@
+## 1.0.04
+Stuff looks nicer with bridge rendering now, the bridge emoji should match the direction when you created the bridge.
+
+---
 ## 1.0.3
 You can now *hopefully* delete your bridges. Also created a dedicated function to render bridge start and endpoint in Discord.
 
