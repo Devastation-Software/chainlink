@@ -2,6 +2,6 @@
   "info": "All the information about this bot.",
   "miscellaneous": "Other commands that don't fit in any predefined category.",
   "utility": "Helpful functions that don't necessarily pertain to this bot.",
-  "setup": "Commands to set the bridges up.",
+  "bridges": "Commands to set up and manage bridges.",
   "owner": "Commands that only the owner can use and are possibly dangerous."
 }
