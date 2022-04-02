@@ -18,10 +18,11 @@ module.exports = {
   async execute(interaction, client) {
     let type = interaction.options.getString("type");
 
+    let bridges;
     if (type === "server") {
-      let bridges = client.utils.bridges.findBridgesByGuild(interaction.guild.id);
+      bridges = client.utils.bridges.findBridgesByGuild(interaction.guild.id);
     } else {
-      let bridges = client.utils.bridges.findBridgesByChannel(interaction.channel.id);
+      bridges = client.utils.bridges.findBridgesByChannel(interaction.channel.id);
     }
 
     let embed = new DJSBuilders.Embed()
