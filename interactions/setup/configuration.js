@@ -198,7 +198,7 @@ module.exports = {
       client.utils.bridges.setBridgeConfig(id, config);
 
       baseEmbed.setTitle("Success");
-      baseEmbed.setDescription("Successfully set bridge configuration.");
+      baseEmbed.setDescription("Successfully set " + key + " to `" + value + "`.");
       baseEmbed.setColor(client.colors.success);
       await curPage.edit({
         embeds: [baseEmbed]
@@ -258,7 +258,7 @@ module.exports = {
       }
 
       baseEmbed.setTitle("Bridge Configuration");
-      baseEmbed.setDescription(`**Key**: ${key}\n**Value**: ${value.toString()}`);
+      baseEmbed.setDescription(`**Key**: ${key}\n**Value**: \`${value.toString()}\``);
       baseEmbed.setColor(client.brandColor);
       await curPage.edit({
         embeds: [baseEmbed]
