@@ -41,7 +41,7 @@ module.exports = {
           name: "Config object",
           value: "```json\n" + JSON.stringify(bridge.config, null, 4) + "```",
         })
-        .addFooter({
+        .setFooter({
           text: "Requested by " + interaction.user.tag,
           iconURL: interaction.user.avatarURL(),
         });
