@@ -4,6 +4,7 @@ const fs = require("fs");
 const emojis = require("./assets/emoji.json");
 const config = require("./config/config.json");
 const utils = require("./utils/utils.js");
+const colors = require("./assets/colors.json");
 
 const client = new Discord.Client({
   intents: 131071,
@@ -39,6 +40,7 @@ client.info = require("./assets/version.json");
 client.brandColor = 16746496;
 client.config = config;
 client.utils = utils;
+client.colors = colors;
 
 // Deploy slash commands to Discord.
 client.utils.deploy.deploy(commandsList);

@@ -13,7 +13,8 @@ module.exports = {
             guild: guild,
             channel: channel,
             verified: false,
-            uuid: randomUUID
+            uuid: randomUUID,
+            config: {}
         };
         fs.writeFileSync('./data/bridges.json', JSON.stringify(bridges));
         return randomUUID;
@@ -103,5 +104,16 @@ module.exports = {
         let codes = JSON.parse(fs.readFileSync('./data/codes.json', 'utf8'));
         delete codes[bridgeUUID];
         fs.writeFileSync('./data/codes.json', JSON.stringify(codes));
-    }
+    },
+
+    getBridgeConfig: function (bridgeUUID) {
+        let bridges = JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'));
+        return bridges[bridgeUUID].config;
+    },
+
+    setBridgeConfig: function (bridgeUUID, config) {
+        let bridges = JSON.parse(fs.readFileSync('./data/bridges.json', 'utf8'));
+        bridges[bridgeUUID].config = config;
+        fs.writeFileSync('./data/bridges.json', JSON.stringify(bridges));
+    },
 }
