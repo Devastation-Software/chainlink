@@ -33,11 +33,11 @@ module.exports = {
     for (let bridge of bridges) {
       let bridgeValue;
       if (bridge.type === "server") {
-        let thisServer = client.guilds.cache.get(bridge.value);
-        let thatServer = client.guilds.cache.get(bridge.endpoint);
+        let thisServer = await client.guilds.fetch(bridge.guild);
+        let thatServer = await client.guilds.fetch(bridge.endpoint);
       } else {
-        let thisChannel = client.channels.cache.get(bridge.value);
-        let thatChannel = client.channels.cache.get(bridge.endpoint);
+        let thisChannel = await client.channels.fetch(bridge.channel);
+        let thatChannel = await client.channels.fetch(bridge.endpoint);
         if (thisChannel.guild.id === thatChannel.guild.id) {
           // Can render both channels as channel mentions.
           bridgeValue = `${thisChannel} ➡️ ${thatChannel}`;
