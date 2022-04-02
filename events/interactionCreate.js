@@ -19,12 +19,12 @@ module.exports = async (interaction) => {
         });
 
         // Owner only command check
-        if (command.perms.ownerOnly && ((interaction.user.id !== client.config.ownerID) && (client.config.testers.indexOf(interaction.user.id) === -1))) {
+        if (command.perms.ownerOnly && ((interaction.user.id !== client.config.ownerId) && (client.config.testers.indexOf(interaction.user.id) === -1))) {
             return interaction.reply("❌ That's an owner only command!");
         }
 
         // If the user is bot owner bypass all permission checks
-        if ((interaction.user.id !== client.config.ownerID) && (client.config.testers.indexOf(interaction.user.id) === -1)) {
+        if ((interaction.user.id !== client.config.ownerId) && (client.config.testers.indexOf(interaction.user.id) === -1)) {
             // Do nothing, bypass all permission checks
         } else {
             command.perms.user.forEach(perm => {
