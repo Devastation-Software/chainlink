@@ -10,6 +10,7 @@ const changelog = require("./changelog.js");
 const bridges = require("./bridge.js");
 const messages = require("./messages.js");
 const misc = require("./misc.js");
+const webhooks = require("./webhooks.js");
 
 module.exports = {
   time: time,
@@ -21,5 +22,6 @@ module.exports = {
   changelog: changelog,
   bridges: bridges,
   misc: misc,
-  messages: messages
+  messages: messages,
+  webhooks: webhooks
 };
