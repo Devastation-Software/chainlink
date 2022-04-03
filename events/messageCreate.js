@@ -14,6 +14,7 @@ module.exports = async (message) => {
 
     let channelBridges = client.utils.bridges.findBridgesByChannel(message.channel.id);
 
+    // In the future we will use `await client.utils.messages.handleMessage(client, message)`
     for (const bridge of channelBridges) {
         if (bridge.verified) {
             if (bridge.type === "channel") {
