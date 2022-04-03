@@ -9,7 +9,7 @@ module.exports = async (message) => {
     // Ignore webhooks so loops don't occur
     if (message.webhookID) return;
 
-    // Ignore my own messages
+    // Ignore bot's own messages
     if (message.author.id === client.user.id) return;
 
     let channelBridges = client.utils.bridges.findBridgesByChannel(message.channel.id);

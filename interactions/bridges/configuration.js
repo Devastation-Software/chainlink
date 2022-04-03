@@ -67,7 +67,12 @@ module.exports = {
         "description": "The delivery method to use for the bridge.",
         "options": ["message", "embed", "webhook", "image"],
         "default": "message",
-      }
+      },
+      "reuse-webhook": {
+        "description": "Whether to reuse webhooks or create and delete them for each message.",
+        "options": ["true", "false"],
+        "default": "true",
+      },
     }
 
     let baseEmbed = new DJSBuilders.Embed()

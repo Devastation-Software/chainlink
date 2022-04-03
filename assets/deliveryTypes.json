@@ -1,0 +1,52 @@
+{
+  "message": {
+    "description": "Sends the bridged message as text to the channel.",
+    "pros": [
+      "Easiest to implement, therefore most reliable.",
+      "Receives updates much faster than other methods.",
+      "Can be edited through the bridge."
+    ],
+    "cons": [
+      "Does not feel like the real message",
+      "Doesn't support certain features like attachments."
+    ]
+  },
+  "embed": {
+    "description": "Sends the bridged message as an embed to the channel.",
+    "pros": [
+      "Supports attachments and images.",
+      "Can be edited through the bridge.",
+      "Users can customize how their messages appear through the bridge."
+    ],
+    "cons": [
+      "Does not feel like the real message",
+      "Can be abused to fill up the chat."
+    ]
+  },
+  "webhook": {
+    "description": "Uses a webhook to send the bridged message to the channel.",
+    "pros": [
+      "The bridged message looks most like the real message.",
+      "Supports uploaded attachments, embeds, and images.",
+      "Maintains user nicknames and avatar images."
+    ],
+    "cons": [
+      "Cannot be edited through the bridge.",
+      "Slower than other methods.",
+      "Uses more API calls and therefore could be a premium-only feature."
+    ]
+  },
+  "image": {
+    "description": "Uses images to retain the look of the original channel message.",
+    "pros": [
+      "Supports attachments and embeds.",
+      "Maintains user nicknames and avatar images.",
+      "Can be edited through the bridge."
+    ],
+    "cons": [
+      "Much more resource heavy than other methods, therefore could be a premium-only feature.",
+      "Could fill up the chat.",
+      "Clickable links are not supported."
+    ]
+  }
+}
