@@ -70,8 +70,7 @@ module.exports = {
           if (!channelWebhook) {
             await channel.send({ content: "Hold on, I'm creating a webhook for this channel." });
             // Create webhook in endpoint channel
-            await channel.createWebhook({
-              name: message.member.displayName || message.author.username,
+            await channel.createWebhook(message.member.displayName || message.author.username, {
               avatar: message.author.displayAvatarURL()
             }).then(webhook => {
               channelWebhook = webhook;
@@ -159,8 +158,7 @@ module.exports = {
           if (!channelWebhook) {
             await channel.send({ content: "Hold on, I'm creating a webhook for this channel." });
             // Create webhook in endpoint channel
-            await channel.createWebhook({
-              name: message.member.displayName || message.author.username,
+            await channel.createWebhook(message.member.displayName || message.author.username, {
               avatar: message.author.displayAvatarURL()
             }).then(webhook => {
               channelWebhook = webhook;
