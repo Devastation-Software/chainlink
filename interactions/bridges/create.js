@@ -43,6 +43,17 @@ module.exports = {
             embeds: [embed],
         });
 
+        // We don't support server to server bridges yet.
+        if (type === "server") {
+            embed.setTitle("Unsupported bridge type.");
+            embed.setDescription("Sorry, but we don't support server to server bridges yet.");
+            embed.setColor(client.colors.error);
+            await curPage.edit({
+                embeds: [embed],
+            });
+            return;
+        }
+
         // Check if the bot is in the endpoint server
         let endpointGuildId;
         try {
