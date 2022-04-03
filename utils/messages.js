@@ -101,7 +101,7 @@ module.exports = {
     }
 
     for (const bridge of endpointBridges) {
-      if (bridge.verified && (bridge.direction === "both" || bridge.direction === "here")) {
+      if (bridge.verified && (bridge.direction === "here")) {
         if (bridge.config.delivery === "message") {
           let newMessage = "**" + message.author.tag + "**: " + message.content;
           let channel = client.channels.cache.get(bridge.endpoint);
