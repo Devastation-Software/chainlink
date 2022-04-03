@@ -4,7 +4,7 @@ const Discord = require("discord.js"),
 module.exports = async (message) => {
     let client = message.client;
 
-    let messageBridged = false;
+    // let messageBridged = false;
 
     // Ignore webhooks so loops don't occur
     if (message.webhookID) return;
@@ -15,6 +15,8 @@ module.exports = async (message) => {
     let channelBridges = client.utils.bridges.findBridgesByChannel(message.channel.id);
 
     // In the future we will use `await client.utils.messages.handleMessage(client, message)`
+
+    /*
     for (const bridge of channelBridges) {
         if (bridge.verified) {
             if (bridge.type === "channel") {
@@ -46,6 +48,9 @@ module.exports = async (message) => {
             messageBridged = true;
         }
     }
+     */
+
+    let messageBridged = client.utils.messages.handleMessage(client, message);
 
     if (messageBridged) {
         client.user.setStatus("online");

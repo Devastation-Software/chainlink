@@ -3,6 +3,7 @@ const DJSBuilders = require("@discordjs/builders");
 module.exports = {
   handleMessage: async function(client, message) {
     // Will handle guild bridges later.
+    let status = false;
 
     // Find all bridges whose channel is the same as the channel of the message
     let channelBridges = client.utils.bridges.findBridgesByChannel(message.channel.id);
@@ -95,6 +96,7 @@ module.exports = {
         } else if (bridge.config.delivery === 'image') {
           // Delivery method not yet implemented.
         }
+        status = true;
       }
     }
 
@@ -183,7 +185,9 @@ module.exports = {
         } else if (bridge.config.delivery === "image") {
           // Delivery method not yet implemented.
         }
+        status = true;
       }
     }
+    return status;
   }
 };
