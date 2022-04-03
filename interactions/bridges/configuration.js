@@ -104,7 +104,6 @@ module.exports = {
         });
         return;
       }
-
       let reset = await client.utils.confirm(
         interaction,
         "Reset bridge configuration?",
