@@ -8,7 +8,7 @@ const colors = require("./assets/colors.json");
 
 const client = new Discord.Client({
   intents: 131071,
-  partials: [Discord.Partials.Message, Discord.Partials.Channel], // Needed to get messages from DM's as well
+  partials: [Discord.Partials.Message, Discord.Partials.Channel, Discord.Partials.GuildMember], // Needed to get messages from DM's as well
 });
 
 let commandModules = fs.readFileSync("./assets/modules.json", {
