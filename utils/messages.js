@@ -67,6 +67,7 @@ module.exports = {
             channel = await client.channels.fetch(bridge.endpoint);
           }
           let channelWebhook = await client.utils.webhooks.getWebhook(bridge.endpoint);
+          channelWebhook = await client.fetchWebhook(channelWebhook)
           if (!channelWebhook) {
             await channel.send({ content: "Hold on, I'm creating a webhook for this channel." });
             // Create webhook in endpoint channel
@@ -155,6 +156,7 @@ module.exports = {
             channel = await client.channels.fetch(bridge.endpoint);
           }
           let channelWebhook = await client.utils.webhooks.getWebhook(bridge.endpoint);
+          channelWebhook = await client.fetchWebhook(channelWebhook)
           if (!channelWebhook) {
             await channel.send({ content: "Hold on, I'm creating a webhook for this channel." });
             // Create webhook in endpoint channel
