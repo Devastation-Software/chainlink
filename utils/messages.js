@@ -164,7 +164,7 @@ module.exports = {
           if (!channel) {
             channel = await client.channels.fetch(bridge.channel);
           }
-          let channelWebhook = await client.utils.webhooks.getWebhook(bridge.endpoint);
+          let channelWebhook = await client.utils.webhooks.getWebhook(bridge.channel);
           try {
             channelWebhook = await client.fetchWebhook(channelWebhook.id, channelWebhook.token);
           } catch {
@@ -172,14 +172,14 @@ module.exports = {
           }
           if (!channelWebhook) {
             await channel.send({ content: "Hold on, I'm creating a webhook for this channel." });
-            // Create webhook in endpoint channel
+            // Create webhook in bridge creation channel
             await channel.createWebhook(message.member.displayName || message.author.username, {
               avatar: message.author.displayAvatarURL()
             }).then(webhook => {
               channelWebhook = webhook;
             });
             // Store webhook in database
-            client.utils.webhooks.setWebhook(bridge.endpoint, { id: channelWebhook.id, token: channelWebhook.token });
+            client.utils.webhooks.setWebhook(bridge.channel, { id: channelWebhook.id, token: channelWebhook.token });
           }
           if (channelWebhook) {
             // Set webhook username and avatar
