@@ -1,4 +1,4 @@
-## 1.0.5
+## 1.1.0
 Multiple methods for bridge messages implemented!!!
 
 ---
