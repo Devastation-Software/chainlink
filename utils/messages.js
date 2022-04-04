@@ -5,6 +5,11 @@ module.exports = {
     // Will handle guild bridges later.
     let status = false;
 
+    if (message.author.discriminator === "0000") {
+      // This is a webhook.
+      return status;
+    }
+
     // Find all bridges whose channel is the same as the channel of the message
     let channelBridges = client.utils.bridges.findBridgesByChannel(message.channel.id);
     // Find all bridges whose endpoint is the same as the channel of the message
@@ -101,7 +106,7 @@ module.exports = {
     }
 
     for (const bridge of endpointBridges) {
-      if (bridge.verified && (bridge.direction === "here")) {
+      if (bridge.verified && (bridge.direction === "both" || bridge.direction === "here")) {
         if (bridge.config.delivery === "message") {
           let newMessage = "**" + message.author.tag + "**: " + message.content;
           let channel = client.channels.cache.get(bridge.endpoint);
