@@ -1,4 +1,8 @@
 ## 1.0.5
+Multiple methods for bridge messages implemented!!!
+
+---
+## 1.0.5
 Bridge info command, get information and config object for a bridge.
 
 ---
