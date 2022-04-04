@@ -15,7 +15,7 @@ module.exports = {
     async execute(interaction, client) {
         let embed = new DJSBuilders.Embed()
             .setTitle("Invite me")
-            .setDescription("[Click here](https://discordapp.com/oauth2/authorize?client_id=947728244025724998&scope=bot%20applications.commands&permissions=8) to invite me to your server.")
+            .setDescription(`[Click here](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot%20applications.commands&permissions=8) to invite me to your server.`)
             .setColor(client.brandColor);
 
         await interaction.reply({ embeds: [embed] });
