@@ -18,6 +18,9 @@ module.exports = {
     // Handle channel bridges
     for (const bridge of channelBridges) {
       if (bridge.verified && (bridge.direction === "both" || bridge.direction === "there")) {
+        if (bridge.config.delivery === undefined) {
+          bridge.config.delivery = "message";
+        }
         if (bridge.config.delivery === "message") {
           let newMessage = "**" + message.author.tag + "**: " + message.content;
           let channel = client.channels.cache.get(bridge.endpoint);
@@ -111,6 +114,9 @@ module.exports = {
 
     for (const bridge of endpointBridges) {
       if (bridge.verified && (bridge.direction === "both" || bridge.direction === "here")) {
+        if (bridge.config.delivery === undefined) {
+          bridge.config.delivery = "message";
+        }
         if (bridge.config.delivery === "message") {
           let newMessage = "**" + message.author.tag + "**: " + message.content;
           let channel = client.channels.cache.get(bridge.channel);
