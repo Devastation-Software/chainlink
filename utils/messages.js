@@ -39,7 +39,7 @@ module.exports = {
             .setColor(client.brandColor);
 
           // Get all attachments from message
-          let attachments = message.attachments.array();
+          let attachments = message.attachments;
           // If attachment is image, add it to embed
           if (attachments.length > 0) {
             if (attachments.length === 1) {
@@ -132,7 +132,7 @@ module.exports = {
             .setColor(client.brandColor);
 
           // Get all attachments from message
-          let attachments = message.attachments.array();
+          let attachments = message.attachments;
           // If attachment is image, add it to embed
           if (attachments.length > 0) {
             if (attachments.length === 1) {
