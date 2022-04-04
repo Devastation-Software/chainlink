@@ -109,9 +109,9 @@ module.exports = {
       if (bridge.verified && (bridge.direction === "both" || bridge.direction === "here")) {
         if (bridge.config.delivery === "message") {
           let newMessage = "**" + message.author.tag + "**: " + message.content;
-          let channel = client.channels.cache.get(bridge.endpoint);
+          let channel = client.channels.cache.get(bridge.channel);
           if (!channel) {
-            channel = await client.channels.fetch(bridge.endpoint);
+            channel = await client.channels.fetch(bridge.channel);
           }
           if (channel) {
             channel.send({ content: newMessage });
@@ -148,17 +148,17 @@ module.exports = {
             }
           }
 
-          let channel = client.channels.cache.get(bridge.endpoint);
+          let channel = client.channels.cache.get(bridge.channel);
           if (!channel) {
-            channel = await client.channels.fetch(bridge.endpoint);
+            channel = await client.channels.fetch(bridge.channel);
           }
           if (channel) {
             channel.send({ embeds: [embed] });
           }
         } else if (bridge.config.delivery === "webhook") {
-          let channel = client.channels.cache.get(bridge.endpoint);
+          let channel = client.channels.cache.get(bridge.channel);
           if (!channel) {
-            channel = await client.channels.fetch(bridge.endpoint);
+            channel = await client.channels.fetch(bridge.channel);
           }
           let channelWebhook = await client.utils.webhooks.getWebhook(bridge.endpoint);
           channelWebhook = await client.fetchWebhook(channelWebhook.id, channelWebhook.token);
