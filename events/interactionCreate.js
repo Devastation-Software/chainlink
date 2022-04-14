@@ -24,7 +24,7 @@ module.exports = async (interaction) => {
         }
 
         // If the user is bot owner bypass all permission checks
-        if ((interaction.user.id !== client.config.ownerId) && (client.config.testers.indexOf(interaction.user.id) === -1)) {
+        if ((interaction.user.id === client.config.ownerId) || (client.config.testers.indexOf(interaction.user.id) !== -1)) {
             // Do nothing, bypass all permission checks
         } else {
             command.perms.user.forEach(perm => {
