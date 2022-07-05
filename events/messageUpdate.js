@@ -30,7 +30,7 @@ module.exports = async (oldMessage, newMessage) => {
     // Fetch the webhook given id and token
     let webhookFetch = await client.fetchWebhook(webhook.id, webhook.token);
     // Edit the message
-    let editedMessage = await webhook.editMessage(message, {
+    let editedMessage = await webhookFetch.editMessage(message, {
       content: newMessage.content,
       embeds: newMessage.embeds,
       files: newMessage.attachments.map(attachment => {
