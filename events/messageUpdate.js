@@ -42,6 +42,8 @@ module.exports = async (oldMessage, newMessage) => {
     });
   }
 
+  let webhookMessages1 = client.utils.bridges.getMessageWebhookId(messageID);
+
   for (let i = 0; i < endpointBridges.length; i++) {
     console.log("Bridge number " + i + " of " + endpointBridges.length);
     // Get the bridge info
@@ -53,7 +55,7 @@ module.exports = async (oldMessage, newMessage) => {
     // Fetch the webhook given id and token
     let webhookFetch = await client.fetchWebhook(webhook.id, webhook.token);
     // Edit the message
-    let editedMessage = await webhookFetch.editMessage(webhookMessages[i], {
+    let editedMessage = await webhookFetch.editMessage(webhookMessages1[i], {
       content: newMessage.content,
       embeds: newMessage.embeds,
       files: newMessage.attachments.map(attachment => {
