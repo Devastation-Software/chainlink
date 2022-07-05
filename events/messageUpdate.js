@@ -26,7 +26,7 @@ module.exports = async (oldMessage, newMessage) => {
     // Get the message info
     let message = await channel.messages.fetch(bridges[i]);
     // Fetch the webhook info
-    let webhook = await client.utils.getWebhook(bridge.channel);
+    let webhook = await client.utils.webhooks.getWebhook(bridge.channel);
     // Fetch the webhook given id and token
     let webhookFetch = await client.fetchWebhook(webhook.first().id, webhook.first().token);
     // Edit the message
