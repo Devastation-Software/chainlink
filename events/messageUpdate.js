@@ -2,14 +2,15 @@
 // If a message is edited, we'll check to see if it was a message attached to a webhook message in another channel.
 // If it was, we'll edit the webhook message in the other channel.
 
-module.exports = async (message) => {
-  let client = message.client;
+module.exports = async (oldMessage, newMessage) => {
+  console.log("Message edited.");
+  let client = oldMessage.client;
   // Ignore webhooks so loops don't occur
-  if (message.webhookID) return;
+  if (oldMessage.webhookID) return;
   // Ignore bot's own messages
-  if (message.author.id === message.client.user.id) return;
+  if (oldMessage.author.id === client.user.id) return;
   // Get id of message
-  let messageID = message.id;
+  let messageID = oldMessage.id;
   // Now get the message from the database
   let otherMessage = client.utils.bridges.getMessageWebhookId(messageID);
   // If the message was not found, return
@@ -30,14 +31,14 @@ module.exports = async (message) => {
   let otherMessageObject = await channel.messages.fetch(otherMessage.message);
   // Now we know the webhook. We'll attempt to edit the message in the other channel.
   let editedMessage = await webhook.editMessage(otherMessageObject, {
-    content: message.content,
-    embeds: message.embeds,
-    files: message.attachments.map(attachment => {
+    content: newMessage.content,
+    embeds: newMessage.embeds,
+    files: newMessage.attachments.map(attachment => {
       return {
         attachment: attachment.url,
         name: attachment.filename
       };
     }),
-    components: message.components
+    components: newMessage.components
   });
 }
