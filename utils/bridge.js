@@ -148,13 +148,13 @@ module.exports = {
 
     getMessageWebhookId: function (messageId) {
         // Get the value of the message webhook id from the message id.
-        return JSON.parse(fs.readFileSync('./data/webhooks.json', 'utf8'))[messageId];
+        return JSON.parse(fs.readFileSync('./data/messages.json', 'utf8'))[messageId];
     },
 
     setMessageWebhookId: function (messageId, webhookId) {
         // Set the value of the message webhook id from the message id.
-        let webhooks = JSON.parse(fs.readFileSync('./data/webhooks.json', 'utf8'));
+        let webhooks = JSON.parse(fs.readFileSync('./data/messages.json', 'utf8'));
         webhooks[messageId] = webhookId;
-        fs.writeFileSync('./data/webhooks.json', JSON.stringify(webhooks));
+        fs.writeFileSync('./data/messages.json', JSON.stringify(webhooks));
     }
 }
