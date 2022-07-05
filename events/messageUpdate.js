@@ -13,39 +13,28 @@ module.exports = async (oldMessage, newMessage) => {
   console.log("Message was not from the bot.");
   // Get id of message
   let messageID = oldMessage.id;
-  // Now get the message from the database
-  let otherMessage = client.utils.bridges.getMessageWebhookId(messageID);
-  console.log("Got message from database.");
-  // If the message was not found, return
-  if (!otherMessage) return;
-  // Get the channel of the message
-  let channel = client.channels.cache.get(otherMessage.channel);
-  console.log("Got channel.");
-  // Now we know the ID of the webhook to edit. Get the webhook token representing the webhook in that channel.
-  let webhookToken = client.utils.webhooks.getWebhook(channel.id);
-  console.log("Got webhook token.");
-  // If the webhook token is not found, return
-  if (!webhookToken) return;
-  // Now we know the webhook token. Get the webhook from the client
-  let webhook = client.webhooks.cache.get(webhookToken);
-  console.log("Got webhook.");
-  // If the webhook is not found, return
-  if (!webhook) return;
-  // Get the other message
-  let otherMessageObject = await channel.messages.fetch(otherMessage.message);
-  console.log("Got other message.");
-  // Now we know the webhook. We'll attempt to edit the message in the other channel.
-  let editedMessage = await webhook.editMessage(otherMessageObject, {
-    content: newMessage.content,
-    embeds: newMessage.embeds,
-    files: newMessage.attachments.map(attachment => {
-      return {
-        attachment: attachment.url,
-        name: attachment.filename
-      };
-    }),
-    components: newMessage.components
-  });
-
-  console.log("Edited message.");
+  // Now get the other channel to which the message was bridged
+  let channelBridges = client.utils.bridges.findBridgesByChannel(oldMessage.channel.id);
+  console.log("Found bridges in this channel.");
+  // In the future we will use `await client.utils.messages.handleMessage(client, message)`
+  for (const bridge of channelBridges) {
+    // Get the channel id of the bridge
+    let bridgeChannelID = bridge.channel;
+    // Get the channel
+    let bridgeChannel = await client.channels.fetch(bridgeChannelID);
+    // Get the message
+    let bridgeMessageID = client.utils.bridges.getMessageWebhookId(messageID);
+    let bridgeMessage = await bridgeChannel.messages.fetch(bridgeMessageID);
+    let editedMessage = await webhook.editMessage(otherMessageObject, {
+      content: newMessage.content,
+      embeds: newMessage.embeds,
+      files: newMessage.attachments.map(attachment => {
+        return {
+          attachment: attachment.url,
+          name: attachment.filename
+        };
+      }),
+      components: newMessage.components
+    });
+  }
 }
