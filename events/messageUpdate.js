@@ -22,9 +22,9 @@ module.exports = async (oldMessage, newMessage) => {
     // Get the bridge info
     let bridge = bridges[i];
     // Get the channel info
-    let channel = await client.channels.fetch(bridge.channel);
+    let channel = await client.channels.fetch(bridge.endpoint);
     // Fetch the webhook info
-    let webhook = await client.utils.webhooks.getWebhook(bridge.channel);
+    let webhook = await client.utils.webhooks.getWebhook(bridge.endpoint);
     // Fetch the webhook given id and token
     let webhookFetch = await client.fetchWebhook(webhook.id, webhook.token);
     // Edit the message
