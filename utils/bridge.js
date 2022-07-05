@@ -155,7 +155,7 @@ module.exports = {
         // Set the value of the message webhook id from the message id.
         let webhooks = JSON.parse(fs.readFileSync('./data/messages.json', 'utf8'));
         if (webhooks[messageId] === undefined) {
-            webhooks[messageId] = [].push(webhookId);
+            webhooks[messageId] = [webhookId]
         } else {
             webhooks[messageId].push(webhookId);
         }
