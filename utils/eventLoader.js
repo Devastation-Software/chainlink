@@ -10,4 +10,5 @@ module.exports = (client) => {
   //   console.log(packet);
   // });
   client.on("messageUpdate", reqEvent("messageUpdate"));
+  client.on("messageDelete", reqEvent("messageDelete"));
 };
