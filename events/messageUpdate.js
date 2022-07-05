@@ -21,8 +21,6 @@ module.exports = async (oldMessage, newMessage) => {
   // Get the channel of the message
   let channel = client.channels.cache.get(otherMessage.channel);
   console.log("Got channel.");
-  // If the channel is not found, return
-  if (!channel) return;
   // Now we know the ID of the webhook to edit. Get the webhook token representing the webhook in that channel.
   let webhookToken = client.utils.webhooks.getWebhook(channel.id);
   console.log("Got webhook token.");
