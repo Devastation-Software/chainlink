@@ -1,3 +1,7 @@
+## 1.2.0
+MESSAGE EDITING WORKS
+
+---
 ## 1.1.0
 Multiple methods for bridge messages implemented!!!
 
