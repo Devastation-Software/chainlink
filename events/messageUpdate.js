@@ -16,7 +16,7 @@ module.exports = async (oldMessage, newMessage) => {
   // Get all the messages associated with the message ID
   let webhookMessages = client.utils.bridges.getMessageWebhookId(messageID);
   let bridges = client.utils.bridges.findBridgesByChannel(oldMessage.channel.id);
-  let endpointBridges = let bridges = client.utils.bridges.findBridgesByEndpoint(oldMessage.channel.id);
+  let endpointBridges = client.utils.bridges.findBridgesByEndpoint(oldMessage.channel.id);
   // This should be an array, loop over each ID and edit the message
   for (let i = 0; i < bridges.length; i++) {
     console.log("Bridge number " + i + " of " + bridges.length);
