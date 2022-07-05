@@ -1,5 +1,5 @@
 const fs = require("fs");
-const changeLogChannelId = "958837703254876260";
+const changeLogChannelId = "971051994708058112";
 const DJSBuilders = require("@discordjs/builders");
 const chalk = require("chalk");
 
