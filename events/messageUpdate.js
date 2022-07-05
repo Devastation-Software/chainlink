@@ -18,6 +18,7 @@ module.exports = async (oldMessage, newMessage) => {
   let bridges = client.utils.bridges.findBridgesByChannel(oldMessage.channel.id);
   // This should be an array, loop over each ID and edit the message
   for (let i = 0; i < bridges.length; i++) {
+    console.log("Bridge number " + i + " of " + bridges.length);
     // Get the bridge info
     let bridge = bridges[i];
     // Get the channel info
