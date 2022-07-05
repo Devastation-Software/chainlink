@@ -23,14 +23,12 @@ module.exports = async (oldMessage, newMessage) => {
     let bridge = bridges[i];
     // Get the channel info
     let channel = await client.channels.fetch(bridge.channel);
-    // Get the message info
-    let message = await channel.messages.fetch(webhookMessages[i]);
     // Fetch the webhook info
     let webhook = await client.utils.webhooks.getWebhook(bridge.channel);
     // Fetch the webhook given id and token
     let webhookFetch = await client.fetchWebhook(webhook.id, webhook.token);
     // Edit the message
-    let editedMessage = await webhookFetch.editMessage(message, {
+    let editedMessage = await webhookFetch.editMessage(webhookMessages[i], {
       content: newMessage.content,
       embeds: newMessage.embeds,
       files: newMessage.attachments.map(attachment => {
