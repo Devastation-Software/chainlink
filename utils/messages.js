@@ -98,12 +98,15 @@ module.exports = {
               avatar: message.author.displayAvatarURL()
             });
             // Send webhook message
-            await channelWebhook.send({
+            let webhookMsg = await channelWebhook.send({
               content: message.content,
               embeds: message.embeds,
               attachments: message.attachments,
               components: message.components
             });
+
+            // Store the message id that created the webhook message and the webhook message id in the database.
+            client.utils.bridges.setMessageWebhookId(message.id, webhookMsg.id);
           }
         } else if (bridge.config.delivery === 'image') {
           // Delivery method not yet implemented.
@@ -194,12 +197,14 @@ module.exports = {
               avatar: message.author.displayAvatarURL()
             });
             // Send webhook message
-            await channelWebhook.send({
+            let webhookMsg = await channelWebhook.send({
               content: message.content,
               embeds: message.embeds,
               attachments: message.attachments,
               components: message.components
             });
+
+            client.utils.bridges.setMessageWebhookId(message.id, webhookMsg.id);
           }
         } else if (bridge.config.delivery === "image") {
           // Delivery method not yet implemented.
